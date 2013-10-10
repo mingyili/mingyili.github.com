@@ -1,103 +1,373 @@
-* {margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline;
-  background: transparent;}
-body {word-wrap:break-word; line-height:normal;
-  background:#F8F8F8 url(/assets/img/bg.jpg) repeat fixed;
-  font: 14px 'Microsoft Yahei',Tahoma,Arial,Helvetica,Simsun,STHeiti;}
-h1, h2, h3, h4, h5, h6 {overflow: hidden; text-decoration: none;}
-h1{font-weight: 900; font-size: 36px; color: #78c3bf; margin: 20px 0;}
-h2{font-weight: 800; font-size: 32px;}
-h3{font-weight: 700; font-size: 28px; color: rgb(68, 92, 32); margin: 15px auto;}
-h4{font-weight: 600; font-size: 24px;}
-h5{font-weight: 500; font-size: 20px;}
-h6{ ont-weight: 400; font-size: 16px;}
-ul{margin:1em 0 1em 2em;}
-ol{margin:1em 0 1em 2em;}
-ul li,ol li{margin-top:.5em;margin-bottom:.5em;text-decoration: none;}
-ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
-hr{height:1px;border:none;border-top:1px dashed #555555;margin: 5px auto 20px auto;}
-code{padding: 2px 4px; color: #d14;
-  background-color: #f7f7f9; border: 1px solid #e1e1e8;}
-pre code{margin: 10px; border-radius: 10px; -moz-border-radius: 10px;
-  -webkit-border-radius: 10px; overflow-x: hidden;}
-blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
-p{text-indent:10px;}
-img{margin: 5px 20px;}
-a{text-decoration: none; color: rgb(18, 165, 124);}
-li a:hover { color: rgb(52, 190, 52);}
-table { width: 90%; margin: 20px; border-spacing: 2px; border-color: gray;
-  text-align: center; font-size: 16px; border: 1px solid #ddd;}
-th {border-bottom: 1px solid #ddd;}
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    word-wrap:break-word;
+    line-height:normal;
+    background:url(../img/bg.png) repeat;
+    font: 14px 'Microsoft Yahei', Tahoma, Arial, Helvetica, Simsun, STHeiti;
+}
+@font-face {
+ font-family: 'Kelly Slab';
+ src: local('Kelly Slab'), local('KellySlab-Regular'), url(http://themes.googleusercontent.com/static/fonts/kellyslab/v3/iZAdL3szX2z7WwmbB6rlEvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+h1, h2, h3, h4, h5, h6 {
+    overflow: hidden;
+    text-decoration: none;
+    color: #3599FF;
+}
+h1, h3 {
+    margin:10px 0;
+}
+ul {
+    margin:0em;
+    list-style:none;
+}
+p {
+    text-indent:10px;
+}
+img {
+    margin: 5px 20px;
+    border:0;
+}
+a {
+    text-decoration: none;
+    color:#3599FF;
+}
 
+table {
+    width: 90%;
+    margin: 20px;
+    border-spacing: 2px;
+    border-color: gray;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ddd;
+}
+th {
+    border-bottom: 1px solid #ddd;
+}
 /* 左右浮动 */
-.pull-right {float: right;}
-.pull-left {float: left;}
-
-/* class 属性 badge 配合 badge-info 或 badge-inverse 实现不同颜色的标签 */
-.badge {display: inline-block;padding: 2px 10px;margin: 0 5px;font-size: 12px;
-  font-weight: bold;line-height: 20px;color: #fff;text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
-  white-space: nowrap;vertical-align: baseline;background-color: #999;
-  -webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;}
-.badge-info {background-color: #00B9BD;} .badge-info a{color: #fff;}
-.badge-inverse {background-color: #4c4c4c; color: rgb(0,185,189);}
-.badge-large {font-size: 16px;line-height: 29px;}
-.badge-list{margin: 5px;}
-
-/* well 提供白色背景面板 */
-.well {position: relative;width: 810px;padding: 10px 30px 10px 30px;height: auto;
-margin: 60px auto 0;background-color: #fff;border-radius: 10px;}
-
-/* 当把 well 当作 header 时的美化 */
-.well-header h1, .well-header hr {margin: 5px auto; width: 810px;}
-.well-header p {color: rgb(128, 131, 51); }
-
-/* topic 一片纸片*/
-.topic {position: relative; width: 810px; height: auto; background-color: #fff;
-    padding: 10px 30px 10px 30px;margin: 20px auto 0;}
-.topic .title {white-space: nowrap;width: 700px;margin-left: 100px;
-  overflow: hidden;margin-top: 3px;font-size: 24px;}
-.topic p {width: 700px;height: 35px;margin-left: 100px;
-  overflow: hidden;margin-top: 3px;}
-
-/* time-backgroud 和 time-meta 配合显示时间片 */
-.time-backgroud {display: block;width: 34px; height: 30px;top: 38px;left: -23px;
-  position: absolute;text-indent: -9999em;z-index: -1;transform: rotate(27deg);
-  background: url(/assets/img/opcity.png) repeat scroll 0 0 #eb374b;cursor: default;
-  -ms-transform: rotate(27deg);-moz-transform: rotate(27deg);-webkit-transform: rotate(27deg);}
-.time-meta {display: block;zoom: 1;line-height: 35px;color: #fff;overflow: hidden;
-  width: auto;height: 37px;padding-left: 20px;padding-right: 20px;position: absolute;
-  top: 22px;left: -30px;z-index: 30;background-color: #eb374b;}
-
-/* 页脚 */
-.footer {position: relative;width: 810px;padding: 20px;height: auto;
-margin: 0 auto 50px auto;color: #F8F8F8;border-radius: 10px;}
-.footer a{color: rgb(0, 255, 204);}
-
-
-/* 隐藏 div */
-.hide {display: none;}
-
-/*居中*/
-.center{text-align: center;}
-
-/* ---------------- 导航条 ---------------------- */
-/*固定导航条nav 配合 nav-fix-top 或 nav-fix-bottom 可固定导航条于顶部或底部*/
-.nav {background-color: #080808; background: rgba(38,38,38,0.85); width: 100%; min-width: 960px;
-  height: 40px; position: fixed; left: 0; _position: relative; z-index: 400;}
-.nav-fix-top {top: 0;}
-.nav-fix-bottom {bottom: 0;display: none;}
-
-/* 设置导航条宽度为 960px */
-.navbar-panel {color: #333; position: relative; width: 960px; margin: 0 auto;}
-
-/* 导航条大标题 */
-.brand {left: 0; position: absolute; top: 7px; margin-left: 10px; font-size: 22px; }
-.brand a{text-decoration: none; color: #f8f8f8;}
-
+.pull-right {
+    float: right;
+}
+.pull-left {
+    float: left;
+}
+/* ---------------- pagewrap ---------------------- */
+#pagewrap {
+    width:980px;
+    margin:0 auto;
+}
+/* ---------------- header ---------------------- */
+.header {
+    margin:0px auto 10px;
+    position:relative;
+    background:#fff;
+}
+.logo {
+    padding:10px 20px 20px;
+}
+.logo img {
+    float:left;
+    margin:0;
+    padding:0;
+    height:70px;
+    width:70px;
+}
+.logo p {
+    font-family:'Kelly Slab';
+    padding-top:10px;
+}
+.logo p a {
+    font-size:1em;
+    font-size:0.9em\0;
+}
+.logo p span {
+    font: 2em 'Microsoft YaHei', Arial, Tahoma;
+    font-weight:900;
+    margin-left:-10px;
+}
+/* ---------------- nav ---------------------- */
+/*固定导航条nav  其中nav-top-bottom/nav-fix-bottom 可固定导航条于顶部/+底部*/
+.nav-fix, .nav {
+    width:100%;
+    display:block;
+}
+.nav {
+    position:relative;
+}
+.nav-fix {
+    left:0px;
+    position: fixed;
+    _position: absolute;
+    z-index: 900;
+    background:#000;
+}
+.nav-fix-top {
+    top:0px;
+ _top: expression(eval(document.documentElement.scrollTop));
+}
+.nav-fix-bottom {
+    bottom: 0px;
+ _top: expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight);
+}
 /* 导航条列表一行显示 */
-.catalog {margin: 10px 0 0;_margin-left: -3px;}
-.catalog ul, .catalog ol{margin:0;}
-.catalog li {display: inline; vertical-align: middle;
-  text-decoration: none;margin: 10px;}
+.menu {
+    width:980px;
+    margin:0 auto;
+    background:#000;
+    display:block;
+}
+.menu ul {
+    line-height:40px;
+}
+.menu li {
+    display:inline-block;
+    text-decoration: none;
+}
+.menu li a {
+    display:inline;
+    padding:5px 10px;
+    margin:0 10px;
+    color: #f8f8f8;
+    white-space:nowrap;
+}
+.menu li a:hover {
+    background: #ffffff;
+    text-decoration:none;
+    color: #4BA9E6;
+}
+/* ---------------- content ---------------------- */
+.content {
+    margin:0px auto 0;
+    width:680px;
+}
+/* topic 一片纸片*/
+.topic {
+    background:#fff;
+    padding:20px 35px;
+    margin-bottom:10px;
+    position:relative;
+}
+.topic .title {
+    font-size: 1.7em;
+    margin-left:118px;
+}
+.topic p {
+    margin-top: 10px;
+    color:#3599FF;
+}
+/* class 属性 badge 配合 badge-info 实现不同颜色的标签 */
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    margin: 0 5px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    background-color: #0f87ff;
+    color: #fff;
+}
+.badge-large {
+    font-size: 16px;
+    line-height: 29px;
+}
+.badge-list {
+    margin: 5px;
+}
+.topic span.badge {
+    float:left;
+    line-height: 35px;
+    margin:0 5px 0 -35px;
+    padding:0px 8px;
+    font-size:1.2em;
+    font-weight:normal;
+}
+/* ---------------- well-header ---------------------- */
+/* 当把 well 当作 header 时的美化 */
+.well-header {
+    margin: 50px auto 10px;
+}
+.well-header hr {
+    margin: 20px auto 10px;
+}
+/* ---------------- sidebar ---------------------- */
+/* sidebar*/
+.sidebar {
+    width:290px;
+    float:right;
+}
+.sidebar h2 {
+    background:#fff;
+    height:45px;
+    padding-left:1em;
+    line-height:55px;
+    font-size:1.2em;
+}
+.topic-list {
+    margin-bottom:10px;
+    padding:0px 15px 10px 15px;
+    background:#fff;
+}
+.topic-list ul li {
+    padding:0;
+    margin:0;
+}
+.topic-list ul li a {
+    display:block;
+    height:30px;
+    line-height:30px;
+    padding-left:5px;
+    border-top:1px solid #eee;
+}
+.topic-list ul li a span {
+    color:#aaa;
+}
+/* ---------------- foot ---------------------- */
+/* 页脚 */
+.footer {
+    padding:10px 0 60px;
+    color: #fff;
+    width:100%;
+    text-align:center;
+    border-top:1px solid #fff;
+}
+.footer a {
+    color: #036;
+}
+.footer a:hover {
+    color: #fff;
+    text-decoration:underline;
+}
+/* 隐藏 div */
+.hide {
+    display: none;
+}
+/* 显示 div */
+.show {
+    display: block;
+}
+/*居中*/
+.center {
+    text-align: center;
+}
+/*返回顶部*/
+#go-top {
+    background: #ccc;
+    position: fixed;
+    right: 10px;
+    bottom: 145px;
+    width: 54px;
+    height: 54px;
+    opacity:0.8;
+    filter: alpha(opacity = 80);
+    cursor: pointer;
+    z-index: 100;
+    display: none;
+    _position:absolute;
+ _top: expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight);
+}
+#go-top a {
+    font-size:40px;
+    display:block;
+    line-height:54px;
+    padding:2px 8px;
+}
 
-.catalog li a {text-decoration: none; color: #f8f8f8;}
-.catalog li a:hover { color: rgb(0,185,189);}
+/* ---------------- 自适应 ---------------------- */
+/**（液态布局）**/
+@media screen and (max-width: 980px) {
+ #pagewrap {
+ width: 95%;
+}
+ .menu {
+ width:100%;
+}
+ .content {
+ width: 68.5%;
+}
+ .content .topic,
+ .topic {
+ padding:3% 4%;
+ margin-bottom:10px;
+}
+ .sidebar {
+ width: 30%;
+}
+ .sidebar .topic-list {
+ padding: 8% 6%;
+ margin-bottom: 10px;
+}
+.topic span.badge {
+ margin-left:-4.5%;
+}
+}
+/**（单栏布局）**/
+@media screen and (max-width: 650px) {
+ .content {
+ width: auto;
+ float: none;
+}
+ .sidebar {
+ width: 100%;
+ clear:both;
+ margin: 0;
+}
+ .sidebar .topic-list {
+ padding: 2% 4%;
+}
+ .menu ul {
+ text-align:center;
+}
+}
+/**小于480px时**/
+@media screen and (max-width: 480px) {
+ html {
+ -webkit-text-size-adjust: none;
+}
+ a {
+ font-size: 90%;
+}
+ .menu li a {
+ margin:0 8px;
+}
+}
+
+/**小于400px时**/
+@media screen and (max-width: 400px) {
+ .topic .title {
+ clear:both;
+ margin-left:0;
+}
+ .menu li a {
+ margin:0 1%;
+ padding:5px 5px;
+}
+.logo {
+ margin:0 auto;
+ text-align:center;
+}
+.logo p {
+ clear:both;
+ padding:0;
+ margin:0;
+}
+.logo a {
+ padding:0;
+ margin:0;
+}
+ .logo a img {
+ float:none;
+ max-width: 80%;
+ height: auto;
+ width: auto\9; /* ie8 */
+}
+}

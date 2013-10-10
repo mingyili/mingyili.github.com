@@ -1,12 +1,38 @@
 ---
 layout: default
-title: 唐久军的博客
-description: 唐久军的博客, 技术博客, 分享技术, 关注 web，交流学习，共同进步
+title: 明一的博客
+description: 明一李的博客, 前端博客, 分享技术, 关注 web，交流学习，共同进步
 ---
-
-<div class="well">
-    <span>文章总计： {{ site.posts | size }} 篇</span>
-    <span class="pull-right">最后更新时间：{{ site.time | date: "%Y年%m月%d日" }}</span>
+<!--content-->
+<div class="content pull-left">
+  <!--文章总计-->
+  <div class="topic"> <span>文章总计： {{ site.posts | size }} 篇</span> <span>最后更新时间：{{ site.time | date: "%Y年%m月%d日" }}</span> </div>
+  <!--文章-->
+  {% for category in site.categories %}
+  <div id="{{ category | first }}" class="show"> {% for post in site.categories[category.first] %}
+    <div class="topic"> <span class="badge">{{ post.date | date: "%Y年%m月%d日" }}</span>
+      <div class="title"><a href="{{ post.url }}">{{ post.title }}</a></div>
+      <p>{{ post.description }}</p>
+    </div>
+    {% endfor %} </div>
+  {% endfor %}
+  <!--多说评论-->
+  {% include ds_recent.html %} </div>
+<!--content end-->
+<!--sidebar-->
+<div class="sidebar">
+  <h2>所有分类：</h2>
+  <div class="topic-list" id="topic-list-c" > </div>
+  <h2>网站链接：</h2>
+  <div class="topic-list" >
+    <ul>
+      <li><a href="http://www.w3cfuns.com/portal.php" >W3Cfuns</a></li>
+      <li><a href="http://www.uisdc.com/" >优设联盟</a></li>
+      <li><a href="http://www.zcool.com.cn/">站酷</a></li>
+      <li> <a href="https://github.com/" >Github </a></li>
+      <li> <a href="http://dribbble.com/">Dribbble</a></li>
+      <li> <a href="http://www.w3school.com.cn/">w3school</a></li>
+    </ul>
+  </div>
 </div>
-
-{% include ds_recent.html %}
+<!--sidebar end-->

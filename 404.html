@@ -1,19 +1,72 @@
 ---
 layout: none
-title: 唐久军的博客
-description: 唐久军的博客, 技术博客, 分享技术, 关注 web，交流学习，共同进步
+title: 明一的博客
+description: 明一的博客, 技术博客, 分享技术, 关注 web，交流学习，共同进步
 ---
 
 {% include header.html %}
-
-<meta http-equiv="refresh" content="2; url=/index.html" />
+<style type="text/css">
+.well .div404 {
+	margin: 0 auto;
+	padding:80px 100px;
+}
+.well .div404 span{
+	font-size:150px;
+	color:#3599FF;
+	font-weight:bold;
+	animation-name:myfirst;
+	animation-duration:1s;
+	animation-timing-function:linear;
+	animation-delay:0s;
+	animation-iteration-count:infinite;
+	animation-play-state:running;
+	/* Firefox: */
+-moz-animation-name:myfirst;
+	-moz-animation-duration:1s;
+	-moz-animation-timing-function:linear;
+	-moz-animation-delay:0s;
+	-moz-animation-iteration-count:infinite;
+	-moz-animation-play-state:running;
+	/* Safari and Chrome: */
+-webkit-animation-name:myfirst;
+	-webkit-animation-duration:1s;
+	-webkit-animation-timing-function:linear;
+	-webkit-animation-delay:0s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-play-state:running;
+	/* Opera: -o-animation-name:myfirst;*/
+}
+@keyframes myfirst {
+0% {
+color:#3599FF;
+}
+50% {
+color:#ec2013;
+}
+100% {
+color:#3599FF;
+}
+}
+@-webkit-keyframes myfirst /* Safari and Chrome */ {
+0% {
+color:#3599FF;
+}
+50% {
+color:#ec2013;
+}
+100% {
+color:#3599FF;
+}
+}
+</style>
+<meta http-equiv="refresh" content="4; url=/index.html" />
 
 <div class="well well-header center">
     <h3>很抱歉，你访问的页面不存在！</h3>
-    <div><strong><em id="not_found">3</em></strong> 秒后... 
+    <div><strong><em id="not_found">5</em></strong> 秒后... 
         <a href="/index.html">返回首页</a>
     </div>
-    <img src="/assets/img/404.jpg">
+    <div class="div404"><span>404</span></div>
 </div>
 
 {% include footer.html %}
