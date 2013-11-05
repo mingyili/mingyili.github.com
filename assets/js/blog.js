@@ -107,7 +107,7 @@ function fill_topic() {
         str_c += '<li><a href="#" onclick="show_topic(this)">' + topics[i].id + '</a></li>' ;
     }
     str_c += '</ul>';
-	if( topic_list_c != null ||  topic_list != null ){
+	if( topic_list_c != null || topic_list != null ){
 	    topic_list_c.innerHTML = str_c ;
 		topic_list.innerHTML = str ;
 	}
@@ -131,5 +131,4 @@ window.onload = function(){
     fill_topic();
     anchor_redirect();
     scrollitems();
-	 
 }

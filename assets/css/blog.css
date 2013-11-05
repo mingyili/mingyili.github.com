@@ -1,285 +1,300 @@
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    vertical-align: baseline;
-    background: transparent;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	background: transparent;
 }
 body {
-    word-wrap:break-word;
-    line-height:normal;
-    background:url(../img/bg.png) repeat;
-    font: 14px 'Microsoft Yahei', Tahoma, Arial, Helvetica, Simsun, STHeiti;
+	word-wrap:break-word;
+	line-height:normal;
+	background:url(../img/bg.png) repeat;
+	font: 14px 'Microsoft Yahei', Tahoma, Arial, Helvetica, Simsun, STHeiti;
 }
 @font-face {
  font-family: 'Kelly Slab';
  src: local('Kelly Slab'), local('KellySlab-Regular'), url(http://themes.googleusercontent.com/static/fonts/kellyslab/v3/iZAdL3szX2z7WwmbB6rlEvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
 }
 h1, h2, h3, h4, h5, h6 {
-    overflow: hidden;
-    text-decoration: none;
-    color: #3599FF;
+	overflow: hidden;
+	text-decoration: none;
+	color: #3599FF;
 }
 h1, h3 {
-    margin:10px 0;
+	margin:10px 0;
 }
 ul {
-    margin:0em;
-    list-style:none;
+	margin:0em;
+	list-style:none;
 }
 p {
-    text-indent:10px;
+	text-indent:10px;
 }
 img {
-    margin: 5px 20px;
-    border:0;
+	margin: 5px 20px;
+	border:0;
 }
 a {
-    text-decoration: none;
-    color:#3599FF;
+	text-decoration: none;
+	color:#3599FF;
 }
-
 table {
-    width: 90%;
-    margin: 20px;
-    border-spacing: 2px;
-    border-color: gray;
-    text-align: center;
-    font-size: 16px;
-    border: 1px solid #ddd;
+	width: 90%;
+	margin: 20px;
+	border-spacing: 2px;
+	border-color: gray;
+	text-align: center;
+	font-size: 16px;
+	border: 1px solid #ddd;
 }
 th {
-    border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 }
 /* 左右浮动 */
 .pull-right {
-    float: right;
+	float: right;
 }
 .pull-left {
-    float: left;
+	float: left;
+}
+/*清除浮动*/
+.clear {
+	clear:both;
+	height:0;
+	font-size:0;
+	display:block;
+	overflow:hidden;
+	visibility:hidden;
+	zoom:1;/*ie*/
 }
 /* ---------------- pagewrap ---------------------- */
 #pagewrap {
-    width:980px;
-    margin:0 auto;
+	width:980px;
+	margin:0 auto;
 }
 /* ---------------- header ---------------------- */
 .header {
-    margin:0px auto 10px;
-    position:relative;
-    background:#fff;
+	margin:0px auto 10px;
+	position:relative;
+	background:#fff;
+	width:980px;
+	overflow:hidden;
+	padding: 20px 0;
 }
 .logo {
-    padding:10px 20px 20px;
+	margin-left:20px;
+	width:200px;
+	float:left;
 }
 .logo img {
-    float:left;
-    margin:0;
-    padding:0;
-    height:70px;
-    width:70px;
+	float:left;
+	margin:0;
+	padding:0;
+	height:70px;
+	width:70px;
 }
 .logo p {
-    font-family:'Kelly Slab';
-    padding-top:10px;
+	font-family:'Kelly Slab';
+	padding-top:10px;
 }
 .logo p a {
-    font-size:1em;
-    font-size:0.9em\0;
+	font-size:1em;
+	font-size:0.9em\0;
 }
 .logo p span {
-    font: 2em 'Microsoft YaHei', Arial, Tahoma;
-    font-weight:900;
-    margin-left:-10px;
+	font: 2em 'Microsoft YaHei', Arial, Tahoma;
+	font-weight:900;
+	margin-left:-10px;
 }
 /* ---------------- nav ---------------------- */
 /*固定导航条nav  其中nav-top-bottom/nav-fix-bottom 可固定导航条于顶部/+底部*/
 .nav-fix, .nav {
-    width:100%;
-    display:block;
+	display:block;
 }
 .nav {
-    position:relative;
+	position:relative;
+	float:right;
 }
 .nav-fix {
-    left:0px;
-    position: fixed;
-    _position: absolute;
-    z-index: 900;
-    background:#000;
+	left:0px;
+	position: fixed;
+	_position: absolute;
+	z-index: 900;
+	background:#000;
 }
 .nav-fix-top {
-    top:0px;
+	top:0px;
  _top: expression(eval(document.documentElement.scrollTop));
 }
+.nav-fix.nav-fix-top .menu {
+	width:980px;
+	margin:0 auto;
+}
 .nav-fix-bottom {
-    bottom: 0px;
+	bottom: 0px;
  _top: expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight);
 }
 /* 导航条列表一行显示 */
 .menu {
-    width:980px;
-    margin:0 auto;
-    background:#000;
-    display:block;
+	display:block;
 }
 .menu ul {
-    line-height:40px;
+	line-height:40px;
 }
 .menu li {
-    display:inline-block;
-    text-decoration: none;
+	display:inline-block;
+	text-decoration: none;
 }
 .menu li a {
-    display:inline;
-    padding:5px 10px;
-    margin:0 10px;
-    color: #f8f8f8;
-    white-space:nowrap;
+	display:inline;
+	padding:5px 10px;
+	margin:0 10px;
+	white-space:nowrap;
 }
 .menu li a:hover {
-    background: #ffffff;
-    text-decoration:none;
-    color: #4BA9E6;
+	background: #0f87ff;
+	text-decoration:none;
+	color: #fff;
 }
 /* ---------------- content ---------------------- */
 .content {
-    margin:0px auto 0;
-    width:680px;
+	margin:0px auto 0;
+	width:680px;
 }
 /* topic 一片纸片*/
 .topic {
-    background:#fff;
-    padding:20px 35px;
-    margin-bottom:10px;
-    position:relative;
+	background:#fff;
+	padding:20px 35px;
+	margin-bottom:10px;
+	position:relative;
+	overflow:hidden;
 }
 .topic .title {
-    font-size: 1.7em;
-    margin-left:118px;
+	font-size: 1.7em;
+	margin-left:118px;
 }
 .topic p {
-    margin-top: 10px;
-    color:#3599FF;
+	margin-top: 10px;
+	color:#3599FF;
 }
 /* class 属性 badge 配合 badge-info 实现不同颜色的标签 */
 .badge {
-    display: inline-block;
-    padding: 2px 10px;
-    margin: 0 5px;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 20px;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    white-space: nowrap;
-    background-color: #0f87ff;
-    color: #fff;
+	display: inline-block;
+	padding: 2px 10px;
+	margin: 0 5px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 20px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	white-space: nowrap;
+	background-color: #0f87ff;
+	color: #fff;
 }
 .badge-large {
-    font-size: 16px;
-    line-height: 29px;
+	font-size: 16px;
+	line-height: 29px;
 }
 .badge-list {
-    margin: 5px;
+	margin: 5px;
 }
 .topic span.badge {
-    float:left;
-    line-height: 35px;
-    margin:0 5px 0 -35px;
-    padding:0px 8px;
-    font-size:1.2em;
-    font-weight:normal;
+	float:left;
+	line-height: 35px;
+	margin:0 5px 0 -35px;
+	padding:0px 8px;
+	font-size:1.2em;
+	font-weight:normal;
 }
 /* ---------------- well-header ---------------------- */
 /* 当把 well 当作 header 时的美化 */
 .well-header {
-    margin: 50px auto 10px;
+	margin: 50px auto 10px;
 }
 .well-header hr {
-    margin: 20px auto 10px;
+	margin: 20px auto 10px;
 }
 /* ---------------- sidebar ---------------------- */
 /* sidebar*/
 .sidebar {
-    width:290px;
-    float:right;
+	width:290px;
+	float:right;
 }
 .sidebar h2 {
-    background:#fff;
-    height:45px;
-    padding-left:1em;
-    line-height:55px;
-    font-size:1.2em;
+	background:#fff;
+	height:45px;
+	padding-left:1em;
+	line-height:55px;
+	font-size:1.2em;
 }
 .topic-list {
-    margin-bottom:10px;
-    padding:0px 15px 10px 15px;
-    background:#fff;
+	margin-bottom:10px;
+	padding:0px 15px 10px 15px;
+	background:#fff;
 }
 .topic-list ul li {
-    padding:0;
-    margin:0;
+	padding:0;
+	margin:0;
 }
 .topic-list ul li a {
-    display:block;
-    height:30px;
-    line-height:30px;
-    padding-left:5px;
-    border-top:1px solid #eee;
+	display:block;
+	height:30px;
+	line-height:30px;
+	padding-left:5px;
+	border-top:1px solid #eee;
 }
 .topic-list ul li a span {
-    color:#aaa;
+	color:#aaa;
 }
 /* ---------------- foot ---------------------- */
 /* 页脚 */
 .footer {
-    padding:10px 0 60px;
-    color: #fff;
-    width:100%;
-    text-align:center;
-    border-top:1px solid #fff;
+	padding:10px 0 60px;
+	color: #fff;
+	width:100%;
+	text-align:center;
+	border-top:1px solid #fff;
 }
 .footer a {
-    color: #036;
+	color: #036;
 }
 .footer a:hover {
-    color: #fff;
-    text-decoration:underline;
+	color: #fff;
+	text-decoration:underline;
 }
 /* 隐藏 div */
 .hide {
-    display: none;
+	display: none;
 }
 /* 显示 div */
 .show {
-    display: block;
+	display: block;
 }
 /*居中*/
 .center {
-    text-align: center;
+	text-align: center;
 }
 /*返回顶部*/
 #go-top {
-    background: #ccc;
-    position: fixed;
-    right: 10px;
-    bottom: 145px;
-    width: 54px;
-    height: 54px;
-    opacity:0.8;
-    filter: alpha(opacity = 80);
-    cursor: pointer;
-    z-index: 100;
-    display: none;
-    _position:absolute;
+	background: #ccc;
+	position: fixed;
+	right: 10px;
+	bottom: 145px;
+	width: 54px;
+	height: 54px;
+	opacity:0.8;
+	filter: alpha(opacity = 80);
+	cursor: pointer;
+	z-index: 100;
+	display: none;
+	_position:absolute;
  _top: expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight);
 }
 #go-top a {
-    font-size:40px;
-    display:block;
-    line-height:54px;
-    padding:2px 8px;
+	font-size:40px;
+	display:block;
+	line-height:54px;
+	padding:2px 8px;
 }
 
 /* ---------------- 自适应 ---------------------- */
@@ -288,7 +303,7 @@ th {
  #pagewrap {
  width: 95%;
 }
- .menu {
+ .header {
  width:100%;
 }
  .content {
@@ -316,6 +331,13 @@ th {
  width: auto;
  float: none;
 }
+.header {
+	padding-bottom:5px;
+}
+.nav {
+	float:none;
+	clear:both;
+}
  .sidebar {
  width: 100%;
  clear:both;
@@ -336,9 +358,6 @@ th {
  a {
  font-size: 90%;
 }
- .menu li a {
- margin:0 8px;
-}
 }
 
 /**小于400px时**/
@@ -348,12 +367,13 @@ th {
  margin-left:0;
 }
  .menu li a {
- margin:0 1%;
  padding:5px 5px;
+ margin:0 4px;
 }
 .logo {
  margin:0 auto;
  text-align:center;
+ float:none;
 }
 .logo p {
  clear:both;

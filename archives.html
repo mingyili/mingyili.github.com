@@ -3,25 +3,54 @@ layout: default
 title: 明一的博客（归档）
 description: 明一的博客, 技术博客, 分享技术, 关注 web，交流学习，共同进步
 ---
-
-<div class="topic">
-  <h2>所有文章：</h2>
-  {% capture year %}{% endcapture %}
-  {% capture month %}{% endcapture %}
-
-  <div>
-  {% for post in site.posts %}
-    {% capture new_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-
-    {% if year == new_year %}
+<div class="content pull-left">
+  <div class="topic">
+    <h2>所有文章：</h2>
+    {% capture year %}{% endcapture %}
+    {% capture month %}{% endcapture %}
+    <div> {% for post in site.posts %}
+      {% capture new_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+      
+      {% if year == new_year %}
       {% include archives_month.html %}
-    {% else %}
-      </div>
-      {% capture year %}{{ new_year }}{% endcapture %}
-      <h3>{{ year }} 年</h3>
-      <div id"=year"> {% include archives_month.html %}
-    {% endif %}
-
-  {% endfor %}
-  </ul></div>
+      {% else %} </div>
+    {% capture year %}{{ new_year }}{% endcapture %}
+    <h3>{{ year }} 年</h3>
+    <div id"=year"> {% include archives_month.html %}
+      {% endif %}
+      
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+<!--content end-->
+<!--sidebar-->
+<div class="sidebar">
+  <div class="topic">
+    <h3>关于我</h3>
+    <h6>毕业于石家庄铁道大学，电子商务专业，喜欢旅游，宅，web前端，犯2，也喜欢网页设计，喜欢舒舒服服的生活</h6>
+  </div>
+  <div class="topic">
+    <h3>联系我</h3>
+    <ul>
+      <li>Gmail： <strong>minyili100@gmail.com</strong></li>
+      <li>126邮箱： <strong>limingyi_100@126.com</strong> (常用)</li>
+    </ul>
+  </div>
+  <div class="topic">
+    <h3>喜欢的网站</h3>
+    <ul>
+      <li> <a class="badge badge-list" href="http://www.w3cfuns.com/portal.php">W3Cfuns前端开发网站</a> </li>
+      <li> <a class="badge badge-list" href="http://www.uisdc.com/">优秀网页设计联盟</a> </li>
+      <li> <a class="badge badge-list" href="http://www.zcool.com.cn/">站酷</a> </li>
+      <li> <a class="badge badge-list" href="https://github.com/">Github </a> </li>
+      <li> <a class="badge badge-list" href="http://dribbble.com/">Dribbble</a> </li>
+      <li> <a class="badge badge-list" href="http://www.w3school.com.cn/">w3school</a> </li>
+    </ul>
+  </div>
+</div>
+<div class="clear"></div>
+<div class="topic">
+{% include ds_recent.html %} 
 </div>
