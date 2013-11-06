@@ -38,7 +38,7 @@ blockquote {
     padding-left:.6em;
     color:#555;
 }
-pre code .title {
+.topic pre .title {
 font-size: 14px;
 }
 /****/
