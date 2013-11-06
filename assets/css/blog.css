@@ -117,6 +117,7 @@ th {
 	float:right;
 }
 .nav-fix {
+	width:100%;
 	left:0px;
 	position: fixed;
 	_position: absolute;
@@ -127,7 +128,7 @@ th {
 	top:0px;
  _top: expression(eval(document.documentElement.scrollTop));
 }
-.nav-fix.nav-fix-top .menu {
+.nav-fix .menu {
 	width:980px;
 	margin:0 auto;
 }
@@ -337,6 +338,9 @@ th {
 .nav {
 	float:none;
 	clear:both;
+}
+.nav-fix .menu {
+	width:100%;
 }
  .sidebar {
  width: 100%;
