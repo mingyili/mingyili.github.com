@@ -23,7 +23,7 @@ function scrollitems(){
 //底部返回顶部隐藏和显示
         var go_top = document.getElementById("go-top");
         if( go_top != null ){
-            if( scrollTop >= 300 ) { 
+            if( scrollTop >= 50 ) { 
                 go_top.style.display = "block"; 
             } else { 
                 go_top.style.display = "none"; 
