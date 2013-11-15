@@ -198,6 +198,9 @@ th {
 .badge-list {
 	margin: 5px;
 }
+a.badge:hover {
+	text-decoration:underline;
+}
 .topic span.badge {
 	float:left;
 	line-height: 35px;
@@ -245,6 +248,9 @@ th {
 }
 .topic-list ul li a span {
 	color:#aaa;
+}
+.topic-list ul li a:hover {
+	background-color:#eee;
 }
 /* ---------------- foot ---------------------- */
 /* 页脚 */
