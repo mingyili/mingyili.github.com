@@ -23,13 +23,12 @@ code {
     padding: 2px 4px;
     color: #d14;
     background-color: #f7f7f9;
-    border: 1px solid #e1e1e8;
 }
 pre code {
     margin: 10px;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     overflow-x: hidden;
 }
 blockquote {
@@ -502,7 +501,7 @@ font-size: 14px;
     height:10px;
     margin-top:8px;
     background:#1b6700;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .photoDabb {
     margin:12px 0 0 8px;
@@ -561,7 +560,7 @@ font-size: 14px;
     left:6px;
     height:6px;
     width:6px;
-    border-radius: 10px;
+    border-radius: 5px;
     background:rgba(0,0,0,0);
     border:2px solid #0c5601;
 }
@@ -855,7 +854,7 @@ font-size: 14px;
     width: 45px;
     height: 4px;
     background: #f2f9ff;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 18px 16px #5a0000;
 }
 

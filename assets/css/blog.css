@@ -29,7 +29,8 @@ ul {
 	list-style:none;
 }
 p {
-	text-indent:10px;
+	line-height: 2em;
+	margin-top: .5em
 }
 img {
 	margin: 5px 20px;
@@ -177,7 +178,7 @@ th {
 }
 .topic p {
 	margin-top: 10px;
-	color:#3599FF;
+/* 	color:#3599FF; */
 }
 /* class 属性 badge 配合 badge-info 实现不同颜色的标签 */
 .badge {
