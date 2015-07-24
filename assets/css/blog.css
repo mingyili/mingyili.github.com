@@ -98,6 +98,8 @@ th {
 .logo p {
 	font-family:'Kelly Slab';
 	padding-top:10px;
+    line-height: 1;
+    margin: 0;
 }
 .logo p a {
 	font-size:1em;
@@ -106,7 +108,6 @@ th {
 .logo p span {
 	font: 2em 'Microsoft YaHei', Arial, Tahoma;
 	font-weight:900;
-	margin-left:-10px;
 }
 /* ---------------- nav ---------------------- */
 /*固定导航条nav  其中nav-top-bottom/nav-fix-bottom 可固定导航条于顶部/+底部*/
