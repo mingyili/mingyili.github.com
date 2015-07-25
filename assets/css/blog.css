@@ -33,8 +33,9 @@ p {
 	margin-top: .5em
 }
 img {
-	margin: 5px 20px;
+	margin:0;
 	border:0;
+	max-width:100%;
 }
 a {
 	text-decoration: none;
