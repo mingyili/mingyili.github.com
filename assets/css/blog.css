@@ -34,7 +34,12 @@ p {
 }
 img {
 	margin:0;
+<<<<<<< HEAD
 	border:0; max-width: 100%;
+=======
+	border:0;
+	max-width:100%;
+>>>>>>> origin/master
 }
 a {
 	text-decoration: none;
