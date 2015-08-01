@@ -38,8 +38,9 @@ blockquote {
     color:#555;
 }
 .topic pre .title {
-font-size: 14px;
+    font-size: 14px;
 }
+.topic pre code .title{margin-left: 0;}
 /****/
 .wap {
     margin:0 auto;
