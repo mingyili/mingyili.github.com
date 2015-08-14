@@ -407,3 +407,9 @@ a.badge:hover {
  width: auto\9; /* ie8 */
 }
 }
+.topic #ds-recent-comments li.ds-comment .ds-avatar {
+    left: 0px !important;
+}
+.topic #ds-recent-comments li.ds-comment.ds-show-avatars{
+	padding-left: 40px !important;
+}
