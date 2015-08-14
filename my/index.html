@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon" >
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<title>My.js 首页</title>
+<style>
+.logo{height: 28px;}
+</style>
+</head>
+<body id="body" class="bg_gray">
+	<div class="container bg_white" id="J_content" >
+		
+		<!-- 顶部导航 strat -->
+		<div class="navbar nav_fix_top border_b bg_white">
+			<div class="nav">
+				<div class="nav_item t_left">
+					<!-- <h3 class="f16 t_ellipsis">MY.JS</h3> -->
+				</div>
+				<div class="nav_center">
+					<div class="t_center">
+						<img class="logo" src="images/logo.png"/ id="logo">
+						 <span class="f10 t_ellipsis gray">MY.JS</span> 
+					</div>
+				</div>
+				<div class="nav_item t_right">
+					<!-- <h3 class="f12 gray">More...</h3> -->
+				</div>
+			</div>
+		</div>
+		<div class="clearfix blank blank_top"></div>
+		<!-- 顶部导航 end -->
+		
+		<!-- 主体 start -->
+		<div class="main">
+			<!-- 背景图片 start -->
+			<div class="banner_cont bg_blue" style="height:100px;">
+				<!-- <img class="banner_img" src="images/banner.jpg" /> -->
+			</div>
+			<!-- 背景图片 end -->
+
+			<!-- 用户信息 strat -->
+			<div class="user_cont t_center">
+				<div class="user_img_cont">
+					<div class="user_img rAll">
+						<img class="rAll" src="images/a.jpg" >
+					</div>					
+				</div>
+			</div>
+			
+			<!-- 帮忙用户列表 -->
+			<div class="border_t pd8">
+				<div class="clearfix blank"></div>
+				<div class="btn_cont">
+					<a class="btn b_blue big j_alert1" >弹窗1</a>
+				</div>
+				<div class="btn_cont">
+					<a class="btn b_blue big j_alert2" >弹窗2</a>
+				</div>
+				<div class="btn_cont">
+					<a class="btn b_blue j_tool" >底部工具按钮</a>
+				</div>
+				<div class="btn_cont">
+					<a class="btn b_blue j_right" >右侧滑出</a>
+				</div>
+
+				<div class="btn_cont">
+					<a class="btn b_blue big j_tip" >信息提示</a>
+				</div>
+				<div class="btn_cont">
+					<a class="btn b_blue j_tipsuccess" >成功信息提示</a>
+				</div>
+				<div class="btn_cont">
+					<a class="btn b_blue j_tiperror" >错误信息提示</a>
+				</div>
+				
+				<div class="btn_cont">
+					<a class="btn b_blue big j_toptipA" >顶部信息提示 1s自动关闭</a>
+				</div>
+				<div class="btn_cont">
+					<a class="btn b_blue j_toptipB" >顶部信息显示</a>
+					<a class="btn b_blue btn_half j_toptipBClose" >顶部信息点击关闭</a>
+				</div>
+				
+				<div class="btn_cont">
+					<a class="btn b_blue j_load" >加载...</a>
+				</div>
+				<div class="btn_cont">
+					<a class="btn b_blue j_share"  >分享</a>
+				</div>
+				<div class="btn_cont">
+					<a class="btn b_blue btn_half j_follow">关注</a>
+				</div>
+				
+			</div>
+			<!-- 帮忙用户列表 end-->
+		</div>
+		<!-- 主体 end -->
+		<!-- 版权 start -->
+		<div class="clearfix blank blank_foot"></div>
+		<div class="foot absolute_b">
+			<p class="blank"></p>
+			<!-- <p class="f12">姿美堂</p> -->
+			<p class="f10">技术支持@优物库</p>
+			<p class="blank"></p>
+			<div class="clearfix blank blank_bottom"></div>
+		</div>
+		<!-- 版权 end -->
+		
+		<!-- 底部导航 strat -->
+		<div class="clearfix blank blank_bottom"></div>
+		<div class="navbar nav_fix_bottom">
+			<div class="nav">
+				<div class="n_item">
+					<a class="nav_icon" href="javascript:history.go(-1);"><span class="icons icon-arrow-left"></span></a>
+				</div>
+				<div class="n_item">
+					<a class="nav_icon">
+						<span class="icons icon-home">
+							<span class="nav_tit">商城首页</span>
+						</span>
+					</a>
+				</div>
+				<div class="n_item">
+					<a class="nav_icon"><span class="icons icon-user">
+						<span class="nav_tit">用户中心</span>
+					</span></a>
+				</div>
+				<div class="n_item">
+					<a class="nav_icon"><span class="icons icon-gift">
+						<span class="nav_tit">活动中心</span>
+					</span></a>
+				</div>
+				<div class="n_item">
+					<a class="nav_icon" href="javascript:location.reload();"><span class="icons icon-refresh">
+						<span class="nav_tit">刷新</span>
+					</span></a>
+				</div>
+			</div>
+		</div>
+		<!-- 底部导航 end -->
+		
+	</div>
+	
+	<!-- 右侧滑出层 -->
+	<div class="fix_all hide" id="J_right">
+		<div class="absolute_all j_div hide bg_white">
+			<div class="acont_title">
+				<span class="">这是新层</span>
+				<span class="close icon-close fr t_center r6 pd8 mt-8" id="J_closeR"></span></div>
+			<div class="acont_main">
+				<div class="main">
+					<!-- 参与用户列表 -->
+					<div class="list_cont border_t tap_target" id="J_listA">
+						<ul class="list_ul">	
+							<li class="list_li">
+								<a class = "list_li_a">
+									<div class="list_cell small">
+										<span class="tips rAll bg_red f12">1</span>
+									</div>
+									<div class="list_cell small ">
+										<span class="img_cont rAll">
+											<img class="rAll" src="images/1.jpg" />
+										</span>
+									</div>
+									<div class = "list_cell">
+										<p class="">
+											<span class="gray ">谁谁谁</span>
+											<span class="gray fr blue">有 1 人帮他</span>
+										</p>
+									</div>
+									<div class = "list_cell small">
+										<span class="icon-arrow-right gray fr"></span>
+									</div>
+								</a>
+							</li>
+							<li class="list_li">
+								<a class = "list_li_a">
+									<div class="list_cell small">
+										<span class="tips rAll bg_red f12">1</span>
+									</div>
+									<div class="list_cell small ">
+										<span class="img_cont rAll">
+											<img class="rAll" src="images/1.jpg" />
+										</span>
+									</div>
+									<div class = "list_cell">
+										<p class="">
+											<span class="gray ">谁谁谁</span>
+											<span class="gray fr blue">有 1 人帮他</span>
+										</p>
+									</div>
+									<div class = "list_cell small">
+										<span class="icon-arrow-right gray fr"></span>
+									</div>
+								</a>
+							</li><li class="list_li">
+								<a class = "list_li_a">
+									<div class="list_cell small">
+										<span class="tips rAll bg_red f12">1</span>
+									</div>
+									<div class="list_cell small ">
+										<span class="img_cont rAll">
+											<img class="rAll" src="images/1.jpg" />
+										</span>
+									</div>
+									<div class = "list_cell">
+										<p class="">
+											<span class="gray ">谁谁谁</span>
+											<span class="gray fr blue">有 1 人帮他</span>
+										</p>
+									</div>
+									<div class = "list_cell small">
+										<span class="icon-arrow-right gray fr"></span>
+									</div>
+								</a>
+							</li><li class="list_li">
+								<a class = "list_li_a">
+									<div class="list_cell small">
+										<span class="tips rAll bg_red f12">1</span>
+									</div>
+									<div class="list_cell small ">
+										<span class="img_cont rAll">
+											<img class="rAll" src="images/1.jpg" />
+										</span>
+									</div>
+									<div class = "list_cell">
+										<p class="">
+											<span class="gray ">谁谁谁</span>
+											<span class="gray fr blue">有 1 人帮他</span>
+										</p>
+									</div>
+									<div class = "list_cell small">
+										<span class="icon-arrow-right gray fr"></span>
+									</div>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+					<!-- 参与用户列表 end -->
+				</div>
+			</div>
+			<div class="acont_bottom"></div>
+		</div>
+	</div>
+	
+	<!--底部工具按钮 -->
+	<div class="fix_bottom bg_white list_cont t_center f16 hide" id="J_tool">
+        <p class="list_li noselect">
+            <a class = "list_li_a border_b">普通按钮</a>
+        </p>
+        <p class="list_li noselect">
+            <a class = "list_li_a border_b dred" href="">红色按钮</a>
+        </p>
+        <div class="blank bg_gray"></div>
+        <p class="list_li noselect">
+            <a class = "list_li_a j_cancal">取消</a>
+        </p>
+	</div>
+	
+	<!-- 弹出层 strat -->
+	<div class="pop_cont hide" id="J_pop">
+		<div class="pop_tit bg_blue"><span class="tit">活动说明</span>
+			<span class="close icon-close fr rAll pd5 mt-4 f12" id="j_popClose"></span>
+		</div>
+		<div class="pop_div">
+			<div class="info_section"> 
+				<h6>页面说明</h6>
+				<p>测试测试测试</p> 
+			</div>
+		</div>
+	</div>
+	<!-- 弹出层 end -->
+	
+<script src="js/zepto.js"></script>
+<script src="js/fastclick.mini.js"></script>
+<script src="js/my.js"></script>
+<script type="text/javascript">
+/**
+ * id打开层id: #id，
+ * anim动画自定义，
+ * iscloseMask 关闭是否关闭阴影
+ */
+//打开层
+function showLayer(id, anim){
+	My.hideLoad();
+	My.showMask();
+	My(id).open(anim);
+	$(My.mask).bind(Click, function(){hideLayer(id, anim);});
+}
+//关闭层
+function hideLayer(id, anim, iscloseMask){
+	!iscloseMask && setTimeout(My.hideMask, 100);
+	My(id).close(anim);
+	$(My.mask).unbind(Click);
+}
+/**
+ * id 针对内层有position:absolute的层
+ */
+//层全切出显示
+function showSlideR(id, animte){ //slideLeftAnim
+	My.showMask();
+	document.querySelector(id).style.display = "block";
+	My(id + " .j_div").open(animte);
+}
+//层全切出隐藏
+function hideSlideR(id, animte){
+	My(id + " .j_div").close(animte);
+	My(id).close(animte);
+	setTimeout(function(){My.hideMask();}, 100);
+}
+//分享，关注
+$(".j_share").live(Click, function(){
+	My.showShare();
+});
+$(".j_follow").live(Click, function(){
+	My.showFollow();
+});
+//form input
+function errorInput(input){
+	input.focus();
+	input.parent().addClass("error");
+	input.attr("onblur", "removeError(this)");
+}
+function removeError(_this){
+	$(_this).parent().removeClass("error");
+}
+</script>
+<script type="text/javascript">
+	My.FollowImg = "images/2Dcode.png";
+	
+	
+	$("#j_popClose").bind(Click, function(){
+		hidePop("#J_pop");
+	});
+	
+	////
+	$(".j_alert1").bind(Click, function(){
+		My.showAlert({
+			title: "这是标题",   //值为空默认为没有标题
+			text: "这是弹窗信息",
+			yesText: "好的",
+			animte: "popAnim",
+			clickMaskHide: true
+		});
+	});
+	
+	$(".j_alert2").bind(Click, function(){
+		My.showAlert({
+			text: "<span class='gray'>这是弹窗信息</span>",
+			yesText: "好的",
+			yesStyle: "b_blue", 
+			noText: "取消",   //值为空默认为没有取消按钮，也不会绑定事件
+			animte: "fadeAnim",
+		});
+	});
+	//底部工具
+	$(".j_tool").bind(Click, function(){
+		showLayer('#J_tool', 'slideUpAnim');
+	});
+	$(".j_cancal").bind(Click, function(){
+		hideLayer('#J_tool', 'slideUpAnim');
+	});
+	//右侧层
+	$(".j_right").bind(Click, function(){showSlideR('#J_right', 'slideLeftAnim');});
+	$("#J_closeR").bind(Click, function(){hideSlideR('#J_right', 'slideLeftAnim');});	
+	
+	$(".j_tip").bind(Click, function(){
+		My.showTip("这是提示信息");
+	});
+	$(".j_tipsuccess").bind(Click, function(){
+		My.successTip("成功提示信息<br/>改变隐藏时间", 500);
+	});
+	$(".j_tiperror").bind(Click, function(){
+		My.errorTip("错误提示信息");
+	});
+	
+	$('.j_toptipA').bind(Click, function(){
+		My.showBarTip("顶部提示信息", 1000, 'bg_blue');
+	});
+	$('.j_toptipB').bind(Click, function(){
+		My.showBarTip("顶部提示信息", null, 'bg_yellow');
+	});
+	$('.j_toptipBClose').bind(Click, function(){
+		My.hideBarTip();
+	});
+	
+	$(".j_load").bind(Click, function(){
+		My.showLoad("加载页面");
+		setTimeout(My.hideLoad, 800);
+	});
+</script>
+</body>
+</html>
