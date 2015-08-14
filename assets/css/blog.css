@@ -9,7 +9,7 @@
 body {
 	word-wrap:break-word;
 	line-height:normal;
-	background:url(../img/bg.png) repeat;
+	/* background:url(../img/bg.png) repeat; */
 	font: 14px 'Microsoft Yahei', Tahoma, Arial, Helvetica, Simsun, STHeiti;
 }
 @font-face {
