@@ -45,32 +45,32 @@ var My = (function() {
 
     return function(div) {
         var _this = typeof(div) == "string" ? document.querySelectorAll(div) : div,
-            isShow = undefined;
+            isShow;
         function openAll(anim, time, dom, type){
             if(My.Load && dom != My.Load){ //所有动画都在加载动画之后执行
-                if(My.Load.className != ""){
-				    window.requestAnimFrame(openAll.curry(anim, time, dom, type));
+                if(My.Load.className){
+                    window.requestAnimFrame(openAll.curry(anim, time, dom, type));
                     return false;
                 }
             }
             if(_id(dom).hasClass("hidden")){ 
                 window.requestAnimFrame(openAll.curry(anim, time, dom, type));
             }else{
-				type = type || 'block';
-				isShow = (dom.style.display == type) ? 1 : 0;
+                type = type || 'block';
+                isShow = (dom.style.display == type) ? 1 : 0;
 
-				if(!isShow){
-					time && (dom.style.cssText += " -webkit-animation-duration:" + time + "ms;");
-					anim = anim || "fadeAnim";
-					_id(dom).show(type).classList.add(anim);
-					dom.classList.add("shown");
-					var self = dom;
-					setTimeout(function(){
-						self.classList.remove(anim);
-						self.classList.remove("shown");
-					}, time || 350);
-				}
-			}
+                if(!isShow){
+                    if(time) dom.style.cssText += " -webkit-animation-duration:" + time + "ms;";
+                    anim = anim || "fadeAnim";
+                    _id(dom).show(type).classList.add(anim);
+                    dom.classList.add("shown");
+                    var self = dom;
+                    setTimeout(function(){
+                        self.classList.remove(anim);
+                        self.classList.remove("shown");
+                    }, time || 350);
+                }
+            }
         }
 
         function closeAll(anim, time, dom){
@@ -78,23 +78,23 @@ var My = (function() {
                 if(My.Load && dom == My.Load){ //加载动画时候
                     My.Load.className = ""; My.Load.style.display = "none";
                 }
-				window.requestAnimFrame(closeAll.curry(anim, time, dom));
-			}else{
-				isShow = (dom.style.display != 'none') ? 1 : 0;
+                window.requestAnimFrame(closeAll.curry(anim, time, dom));
+            }else{
+                isShow = (dom.style.display != 'none') ? 1 : 0;
 
-				if(isShow){
-					time && (dom.style.cssText += "-webkit-animation-duration:" + time + "ms;");
-					anim = anim || "fadeAnim";
-					dom.classList.add(anim);
-					dom.classList.add("hidden");
-					var self = dom;
-					setTimeout(function(){
-						self.style.display = "none";
-						self.classList.remove(anim);
-						self.classList.remove("hidden");
-					}, time || 350);
-				}
-			}
+                if(isShow){
+                    if(time) dom.style.cssText += "-webkit-animation-duration:" + time + "ms;";
+                    anim = anim || "fadeAnim";
+                    dom.classList.add(anim);
+                    dom.classList.add("hidden");
+                    var self = dom;
+                    setTimeout(function(){
+                        self.style.display = "none";
+                        self.classList.remove(anim);
+                        self.classList.remove("hidden");
+                    }, time || 350);
+                }
+            }
         }
 
         function touchAll(tclass, dom){
@@ -141,25 +141,25 @@ var My = (function() {
                     touchAll(tclass, _this);
                 }
             }
-        }
-    }
+        };
+    };
 })();
 
 /**
  //弹窗
  My.showAlert({
-		title: "",          //弹窗标题 
-		text: "弹窗提示",   //弹窗文字
-		yesText: "好的",     //确定按钮文字
-		yesStyle: "b_green",       //确定按钮样式
-		onYes: null,        //确定按钮的事件
-		noText: "",          //取消按钮文字
-		noStyle: "b_white",        //取消按钮样式
-		onNo: null,         //取消按钮的事件
-		animte: "fadeAnim", //弹出动画
-		hasMask: true,         //显示遮罩
-		clickMaskHide: false    //点击遮罩关闭
-	});
+        title: "",          //弹窗标题 
+        text: "弹窗提示",   //弹窗文字
+        yesText: "好的",     //确定按钮文字
+        yesStyle: "b_green",       //确定按钮样式
+        onYes: null,        //确定按钮的事件
+        noText: "",          //取消按钮文字
+        noStyle: "b_white",        //取消按钮样式
+        onNo: null,         //取消按钮的事件
+        animte: "fadeAnim", //弹出动画
+        hasMask: true,         //显示遮罩
+        clickMaskHide: false    //点击遮罩关闭
+    });
 
  My.hideAlert("Animation"); //关闭弹窗
  My.reshowAlert(); //显示最近关闭的弹窗
@@ -202,17 +202,16 @@ var My = (function() {
 
         hasmask = option.hasMask;
 
-        alert && alert.div.parentNode.removeChild(alert.div);//清除
+        if(alert) alert.div.parentNode.removeChild(alert.div);//清除
 
         alert = initAlert();
         alert.text.innerHTML = text;
-        alert.text.clientHeight > 65 && (alert.text.style.textAlign = "left");
 
         alert.btnY.innerHTML = yText;
         alert.btnY.className = "btn btn_yes " + yStyle;
         alert.btnY.addEventListener(Click, function(){
-			(onYes() !== false) && my.hideAlert(animte);
-			//当onYes return false 时候就不关闭alert
+            if(onYes() !== false) my.hideAlert(animte);
+            //当onYes return false 时候就不关闭alert
         });
 
         if(title){ //显示标题
@@ -227,34 +226,34 @@ var My = (function() {
             alert.btnN.className = "btn btn_no " + noStyle;
             alert.btnN.innerHTML = nText;
             alert.btnN.addEventListener(Click, function(){
-				(onNo() !== false) && my.hideAlert(animte);
+                if(onNo() !== false) my.hideAlert(animte);
             }); //绑定取消事件
         }else{
             alert.btnN.hide();
         }
         my(alert.div).open(animte); //显示
-        hasmask && my.showMask(); //显示遮罩
+        if(hasmask) my.showMask(); //显示遮罩
 
         if(hasmask && cMHide){
             my.mask.addEventListener(Click, function(){ 
-				My.hideAlert();
-			});
+                My.hideAlert();
+            });
         }
 
         my.reshowAlert = function(){ //再次显示弹窗
             my(alert.div).open(animte); //显示
-            hasmask && my.showMask(); //显示遮罩
-        }
-    }
+            if(hasmask) my.showMask(); //显示遮罩
+        };
+    };
 
     my.hideAlert = function(animte){ //关闭弹窗
         my(alert.div).close(animte);
-        hasmask && my.hideMask();
-    }
+        if(hasmask) my.hideMask();
+    };
 
     function initAlert(){//生成弹窗信息层
         var c = document.createElement("div");
-        c.style.cssText = "text-align:center; position:fixed; top:27%; left:50%; z-index:1400; margin-left:-130px; width:260px; font-size:14px; background-color:#fff; border-radius: 4px;";
+        c.style.cssText = "display:none; text-align:center; position:fixed; top:27%; left:50%; z-index:1400; margin-left:-130px; width:260px; font-size:14px; background-color:#fff; border-radius: 4px;";
         c.className = "alert";
         //chtml = "<div style='padding:10px; text-align:center; position:relative;'></div>";
         //c.innerHTML = chtml;
@@ -264,19 +263,22 @@ var My = (function() {
         d.className = "btn_cont";
         
 
-        var text = document.createElement("p"),
+        var text_cont = document.createElement("div"),
+            text = document.createElement("div"),
             tit = document.createElement("h3"),
             btnY = document.createElement("a"),
             btnN = document.createElement("a");
 
         tit.className = "alert_tit";
-        text.className = "alert_text";
+        text_cont.className = "alert_text";
+        text.style.textAlign = "left";
         btnY.className = "btn_yes";
         btnN.style.cssText = "display:none;";
         btnN.className = "btn_cont";
 
+        text_cont.appendChild(text);
         c.appendChild(tit);
-        c.appendChild(text);
+        c.appendChild(text_cont);
         d.appendChild(btnY);
         d.appendChild(btnN);
         c.appendChild(d);
@@ -290,18 +292,18 @@ var My = (function() {
             text: _id(text),
             btnY: _id(btnY),
             btnN: _id(btnN)
-        }
+        };
     }
 
     //遮罩层
     my.showMask = function(animte, time){
         my.mask = my.mask || initMask();
         my(my.mask).open(animte, time);
-    }
+    };
 
     my.hideMask = function(animte, time){
         my(my.mask).close(animte, time);
-    }
+    };
 
     function initMask(){ //创建遮罩
         var c = document.createElement("div");
@@ -332,29 +334,29 @@ var My = (function() {
         my(tip.div).open(animte);
 
         setTimeout(my.closeTip, time || 1000);
-    },
+    };
 
-	my.successTip = function(text, time, animte) { //展示提示信息
-		tip = tip || initTip();
-		tip.div.className = "my_tip tip_success";
-		tip.text.innerHTML = text || "成功信息";
-		my(tip.div).open(animte);
+    my.successTip = function(text, time, animte) { //展示提示信息
+        tip = tip || initTip();
+        tip.div.className = "my_tip tip_success";
+        tip.text.innerHTML = text || "成功信息";
+        my(tip.div).open(animte);
 
-		setTimeout(my.closeTip, time || 1000);
-	},
+        setTimeout(my.closeTip, time || 1000);
+    };
 
-	my.errorTip = function(text, time, animte) { //展示提示信息
-		tip = tip || initTip();
-		tip.div.className = "my_tip tip_error";
-		tip.text.innerHTML = text || "错误信息";
-		my(tip.div).open(animte);
+    my.errorTip = function(text, time, animte) { //展示提示信息
+        tip = tip || initTip();
+        tip.div.className = "my_tip tip_error";
+        tip.text.innerHTML = text || "错误信息";
+        my(tip.div).open(animte);
 
-		setTimeout(my.closeTip, time || 1000);
-	},
+        setTimeout(my.closeTip, time || 1000);
+    };
 
-	my.closeTip = function(animte) { //关闭提示信息
-		tip && my(tip.div).close(animte);
-	}
+    my.closeTip = function(animte) { //关闭提示信息
+        if(tip){ my(tip.div).close(animte);}
+    };
 
     function initTip() { //生成提示信息
         var c = document.createElement("div"),
@@ -369,7 +371,7 @@ var My = (function() {
         return {
             div: _id(c),
             text: _id(b)
-        }
+        };
     }
 
 })(My);
@@ -392,21 +394,21 @@ var My = (function() {
         bartip.div.innerHTML = text || "横条信息";
         my(bartip.div).open('fadeAnim');
 
-        time && setTimeout(my.hideBarTip, time);
-    },
+        if(time) setTimeout(my.hideBarTip, time);
+    };
 
-	my.hideBarTip = function() { //关闭提示信息
-		bartip && my(bartip.div).close('fadeAnim');
-	}
+    my.hideBarTip = function() { //关闭提示信息
+        if(bartip) my(bartip.div).close('fadeAnim');
+    };
 
-    function initBarTip() { //生成提示信息
+    function initBarTip(){ //生成提示信息
         var c = document.createElement("div");
-        c.style.cssText = "z-index:1400; line-height:1; padding:8px 0; text-align:center;position:fixed; top:0px; width:100%; left:0px;";
+        c.style.cssText = "display:none; z-index:1400; line-height:1; padding:8px 0; text-align:center;position:fixed; top:0px; width:100%; left:0px;";
         document.body.appendChild(c);
 
         return {
             div: _id(c)
-        }
+        };
     }
 
 })(My);
@@ -426,11 +428,11 @@ var My = (function() {
         load.text.innerHTML = text || "正在加载...";
         my(load.div).open(animte, 150);
         my.Load = load.div;
-    },
+    };
 
-	my.hideLoad = function(animte) { //结束加载
-		load && my(load.div).close(animte);
-	}
+    my.hideLoad = function(animte) { //结束加载
+        if(load) my(load.div).close(animte);
+    };
 
     function initLoad() { //生成加载层
         var c = document.createElement("div"),
@@ -447,7 +449,7 @@ var My = (function() {
         return {
             div: _id(c),
             text: _id(b)
-        }
+        };
     }
 
 })(My);
@@ -472,16 +474,16 @@ var My = (function() {
                 follow.btn.addEventListener(Click, function(){
                     my.hideFollow(animte);
                 });
-				follow.div.addEventListener('touchmove', stopProp); //阻止滚动
+                follow.div.addEventListener('touchmove', stopProp); //阻止滚动
             }
-			my.FollowImg && (follow.div.style.top = $getPageScrollHeight() + "px");
+            if(my.FollowImg) (follow.div.style.top = $getPageScrollHeight() + "px");
             my(follow.div).open(animte); //动画显示
         }
-    }
+    };
 
     my.hideFollow = function(animte){//隐藏
-        follow && my(follow.div).close(animte);
-    }
+        if(follow) my(follow.div).close(animte);
+    };
 
 
     function initFollow(){ //生成关注引导层
@@ -490,17 +492,17 @@ var My = (function() {
             chtml = "", dhtml = "";
         //初始化div
         if(!my.FollowImg){
-			c.style.cssText = "position:fixed;z-index:1100;width:100%;height:100%;top:0;bottom:0;right:0;left:0;background-color:#22292c;font-size:16px;";
-			chtml = "<div style = 'width:300px;margin:0 auto;padding-top:40px; color:#fff;'><h3>方法1：</h3><p>点击右上角<span class = 'wx_menuIcon'></span>查看公众号";
-			chtml += "<span class = 'wx_weIcon'></span>关注我们</p><div class = 'clear blank'></div><h3>方法2：</h3><div class = 'clear blank'></div><span>长按复制微信号：</span><br/>";
-			chtml += "<h3 style = 'display:inline-block;margin:8px 0;padding:2px 8px 0;background-color:#fff;color:#333;border-radius:5px;font-size:16px;line-height:30px;'>";
-			chtml += my.WxName+"</h3><br/><span>到微信 “通讯录” 中搜索关注</span></div>";
+            c.style.cssText = "position:fixed;z-index:1100;width:100%;height:100%;top:0;bottom:0;right:0;left:0;background-color:#22292c;font-size:16px;";
+            chtml = "<div style = 'width:300px;margin:0 auto;padding-top:40px; color:#fff;'><h3>方法1：</h3><p>点击右上角<span class = 'wx_menuIcon'></span>查看公众号";
+            chtml += "<span class = 'wx_weIcon'></span>关注我们</p><div class = 'clear blank'></div><h3>方法2：</h3><div class = 'clear blank'></div><span>长按复制微信号：</span><br/>";
+            chtml += "<h3 style = 'display:inline-block;margin:8px 0;padding:2px 8px 0;background-color:#fff;color:#333;border-radius:5px;font-size:16px;line-height:30px;'>";
+            chtml += my.WxName+"</h3><br/><span>到微信 “通讯录” 中搜索关注</span></div>";
         }else{
-			c.style.cssText = "position:absolute;z-index:1100;width:100%;height:100%;top:0;bottom:0;right:0;left:0;background-color:rgba(0,0,0,.6);";
-			chtml = "<div style = 'width:180px; height:180px; margin:25vh auto; padding:25px; background-color:#fff; text-align:center;'><img src='" + my.FollowImg + "' style='width:160px;height:160px;'/><p style='margin:0; font-size:12px;'>长按二维码，识别并关注我们</p>";
-		}
-		
-		c.innerHTML = chtml;
+            c.style.cssText = "position:absolute;z-index:1100;width:100%;height:100%;top:0;bottom:0;right:0;left:0;background-color:rgba(0,0,0,.6);";
+            chtml = "<div style = 'width:180px; height:180px; margin:30% auto; padding:25px; background-color:#fff; text-align:center;'><img src='" + my.FollowImg + "' style='width:160px;height:160px;'/><p style='margin:0; font-size:12px;'>长按二维码，识别并关注我们</p>";
+        }
+        
+        c.innerHTML = chtml;
 
         d.style.cssText = "position:absolute;bottom:16%;left:50%;margin-left:-25px;padding:16px;background-color: rgba(0,0,0,.5);text-align:center;border-radius:100px;";
         dhtml = "<span class = 'wx_closeIcon'><span/>";
@@ -514,7 +516,7 @@ var My = (function() {
         return {
             div: _id(c),
             btn: _id(d)
-        }
+        };
     }
 
 })(My);
@@ -535,11 +537,11 @@ var My = (function() {
             });
         }
         my(shareG.div).open(animte); //动画显示
-    }
+    };
 
     my.hideShare = function(animte){//隐藏
-        shareG && my(shareG.div).close(animte);
-    }
+        if(shareG) my(shareG.div).close(animte);
+    };
 
     function initShareG(){//生成分享引导层
         var c = document.createElement("div"),
@@ -555,7 +557,7 @@ var My = (function() {
         c.addEventListener('touchmove', stopProp);//阻止滚动
         return {
             div: _id(c)
-        }
+        };
     }
 
 })(My);
@@ -571,43 +573,44 @@ var My = (function() {
  */
 function _id(id){
     var _this = typeof(id) == "string" ? document.getElementById(id) : id,
-		myClass = _this.className || "";
+        myClass = _this.className || "";
 
     _this.show = function(type){
         type = type || "block";
         _this.style.display = type;
         return _this;
-    }
+    };
     _this.hide = function(){
         _this.style.display = "none";
         return _this;
-    }
+    };
     _this.isShow = function(){
         return _this.style.display == "block" ? true : false ;
-    }
+    };
     _this.addClass = function(a){
-        !(_this.hasClass(a)) && (_this.className = myClass + " " + a);
+        if(!_this.hasClass(a)) _this.className = myClass + " " + a;
         return _this;
-    }
+    };
     _this.removeClass = function(b){
         var reg = RegExp("\\b" + b + "\\b", "g"); //按单词匹配
         myClass = myClass.replace(reg, "");
         myClass = myClass.replace(/\s{2,}/g, " ");//去掉连续出现的空格
         _this.className = myClass.replace(/(^\s*)|(\s*$)/g, "");//去掉开始结尾的空格
         return _this;
-    }
+    };
     _this.hasClass = function(c){
         var reg = RegExp("\\b" + c + "\\b", "g"), //按单词匹配
             flag = myClass.match(reg) ? true : false;
         return flag;
-    }
+    };
     _this.toggleClass = function(d){
-        _this.hasClass(d) ? _this.removeClass(d) : _this.addClass(d);
+        if(_this.hasClass(d)) _this.removeClass(d);
+        else _this.addClass(d);
         return _this;
-    }
+    };
 
     return _this;
-};
+}
 
 //阻止默认行为
 function stopProp(e){
@@ -620,28 +623,28 @@ function $getContentHeight() {
     var bodyCath = document.body;
     var doeCath = document.compatMode == 'BackCompat' ? bodyCath: document.documentElement;
     return (window.MessageEvent && navigator.userAgent.toLowerCase().indexOf('firefox') == -1) ? bodyCath.scrollHeight: doeCath.scrollHeight;
-};
+}
 function $getContentWidth() {
     var bodyCath = document.body;
     var doeCath = document.compatMode == 'BackCompat' ? bodyCath: document.documentElement;
     return (window.MessageEvent && navigator.userAgent.toLowerCase().indexOf('firefox') == -1) ? bodyCath.scrollWidth: doeCath.scrollWidth;
-};
+}
 function $getPageScrollHeight() {
     var bodyCath = document.body;
     var doeCath = document.compatMode == 'BackCompat' ? bodyCath: document.documentElement;
     var ua = navigator.userAgent.toLowerCase();
     return (window.MessageEvent && ua.indexOf('firefox') == -1 && ua.indexOf('opera') == -1 && ua.indexOf('msie') == -1) ? bodyCath.scrollTop: doeCath.scrollTop;
-};
+}
 function $getPageScrollWidth() {
     var bodyCath = document.body;
     var doeCath = document.compatMode == 'BackCompat' ? bodyCath: document.documentElement;
     return (window.MessageEvent && navigator.userAgent.toLowerCase().indexOf('firefox') == -1) ? bodyCath.scrollLeft: doeCath.scrollLeft;
-};
+}
 function $getWindowHeight() {
     var bodyCath = document.body;
     return (document.compatMode == 'BackCompat' ? bodyCath: document.documentElement).clientHeight;
-};
+}
 function $getWindowWidth() {
     var bodyCath = document.body;
     return (document.compatMode == 'BackCompat' ? bodyCath: document.documentElement).clientWidth;
-};
+}
