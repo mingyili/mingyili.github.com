@@ -16,9 +16,6 @@ AngularJS 理念本人理解就是模块化，写模版；
 异步执行$scope内容的改变的时候需要用 `$scope.apply(function(){});` 更新$scope  
 
 $rootScope 相当于全局的scope 改变全局的变量；  
-
-
-  
  
   
 
