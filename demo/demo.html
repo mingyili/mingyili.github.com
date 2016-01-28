@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta http-equiv="x-dns-prefetch-control" content="on"/>
+
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <title>功能展示</title>
+        <script type="text/javascript">
+        /*图片错误*/
+        function nofind(str){
+            var img = event.srcElement;
+            img.src = str || "images/none.png";
+            img.onerror = null;
+        }
+        </script>
+        <style>
+        body:after {
+            background-image: url(images/back.png);
+            background-size: cover;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div></div>
+            <div class="btn_cont">
+                <a class="btn j_alert">默认按钮</a>
+            </div>
+
+            <div class="btn_cont">
+                <a class="btn btn_line j_follow">关注提示</a>
+                <a class="btn btn_half j_share">分享提示</a>
+            </div>
+
+            <div class="btn_cont">
+                <a class="btn btn_third b_blue j_tips">信息提示</a>
+                <a class="btn btn_third b_green j_tips_success">成功提示</a>
+                <a class="btn btn_third b_red j_tips_error">失败提示</a>
+            </div>
+
+            <div class="btn_cont">
+                <a class="btn btn_third btn_line b_blue j_bar_tips">顶部提示打开</a>
+                <a class="btn btn_third btn_line b_green j_bar_close">关闭</a>
+                <a class="btn btn_third btn_line b_red j_bar_auto">定时打开关闭</a>
+            </div>
+
+            <div class="btn_cont">
+                <a class="btn b_yellow btn_big j_load">开始加载</a>
+            </div>
+                
+
+        </div>
+        <!-- container end -->
+        
+        <script src="js/zepto.min.js"></script>
+        <script src="js/common.js"></script>
+
+        <script>
+        //关注二维码 公众号的二维码
+        $.FollowImg = 'images/2Dcode.png'
+        //弹窗
+        $('.j_alert').bind('click', function(){
+            $.showAlert({
+                title: '这是标题',
+                text: '这是弹窗信息',
+                yesText: '确定',
+                animte: 'popAnim',
+                onYes: function(){
+                    $.showAlert({
+                        text: '你点击了确定',
+                        yesStyle: 'b_blue'
+                    });
+                    return false;
+                },
+                noText: '取消'
+            });
+        });
+        //提示
+        $('.j_tips').bind('click', function () {
+            $.showTip('这是普通提示信息');
+        });
+        $('.j_tips_success').bind('click', function () {
+            $.successTip('这是成功提示信息');
+        });
+        $('.j_tips_error').bind('click', function () {
+            $.errorTip('这是失败提示信息');
+        });
+        //顶部提示
+        $('.j_bar_tips').bind('click', function () {
+            $.showBarTip('这是普通顶部提示信息');
+        });
+        $('.j_bar_close').bind('click', function () {
+            $.hideBarTip();
+        });
+        $('.j_bar_auto').bind('click', function () {
+            $.showBarTip('这是自定义提示信息', 1000, 'bg_red');
+        });
+        //加载动画
+        $('.j_load').bind('click', function () {
+            $.showLoad('开始加载');
+            setTimeout(function(){
+                $.hideLoad();
+            }, 1000);
+        });
+        
+        </script>
+    </body>
+</html>
