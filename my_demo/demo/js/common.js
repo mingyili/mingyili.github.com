@@ -5,7 +5,7 @@
     /* SlideDown */
     $.fn.slideDown = function (duration) { 
         if(this.length < 1 || this.css('display') != 'none') return;
-        duration = duration || 300;
+        duration = duration || 400;
         
         var position = this.css('position');
         this.css({
@@ -34,6 +34,8 @@
             paddingBottom: 0,
             'transition-duration': duration + 'ms',
             '-webkit-transition-duration': duration + 'ms',
+            'transform': 'translate3d(0, 0, 0)',
+            '-webkit-transform': 'translate3d(0, 0, 0)',
         });
         setTimeout(function(){
             _this.css({
@@ -42,6 +44,8 @@
                 marginBottom: marginBottom,
                 paddingTop: paddingTop,
                 paddingBottom: paddingBottom,
+                'transform': 'translate3d(0, 0, 0)',
+                '-webkit-transform': 'translate3d(0, 0, 0)',
             });
         },1);
     };
@@ -49,7 +53,7 @@
     /* SlideUp */
     $.fn.slideUp = function (duration) {
         if (this.length < 1 || this.css("display") == 'none') return false;
-        duration = duration || 300;
+        duration = duration || 400;
         
         var _this = this,
             height = _this.css('height'),
@@ -67,6 +71,8 @@
             paddingBottom: paddingBottom,
             'transition-duration': duration + 'ms',
             '-webkit-transition-duration': duration + 'ms',
+            'transform': 'translate3d(0, 0, 0)',
+            '-webkit-transform': 'translate3d(0, 0, 0)',
         });
         
         setTimeout(function(){
@@ -83,7 +89,9 @@
                     marginTop: marginTop,
                     marginBottom: marginBottom,
                     paddingTop: paddingTop,
-                    paddingBottom: paddingBottom
+                    paddingBottom: paddingBottom,
+                    'transform': 'translate3d(0, 0, 0)',
+                    '-webkit-transform': 'translate3d(0, 0, 0)',
                 });
             });
         },1);
