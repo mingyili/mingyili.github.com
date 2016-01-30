@@ -9,7 +9,7 @@
         <meta name="format-detection" content="telephone=no"/>
         <meta http-equiv="x-dns-prefetch-control" content="on"/>
 
-        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="css/common.css?=2"/>
         <title>会员中心</title>
         <style>
         body:after {
@@ -33,14 +33,14 @@
                     </div>
                     <div class="item_cell">
                         <p class="user_name"><b class="t_ellipsis">用户昵称</b></p>
-                        <b class="t_ellipsis">会员ID：11111</b>
+                        <b class="user_id t_ellipsis">会员ID：11111</b>
                     </div>
                     <div class="item_arrow"><i class="icon_arrow_left"></i></div>
                 </a>
 
                 <!--  class=j_open_dowm open 为默认打开 -->
 
-                <div class="open_title rbig j_open_dowm open">
+                <div class="open_title rbig j_open_dowm ">
                     <div class="item_media"><i class="icon_arrow_left"></i></div>
                     <div class="item_cell">我的会员卡</div>
                     <div class="item_after">3张 </div>
@@ -129,7 +129,7 @@
                         <span>我的订单</span>
                         <a href="#" class="fr">more</a>
                     </div>
-                    <div class="news_info ">
+                    <div class="news_info">
                         <ul>
                             <li class="item_link">
                                 <a href="" class="list_li">
@@ -170,6 +170,24 @@
                         <img src="images/ad2.png">
                     </a>
                 </div> 
+                <!-- ads -->
+                <div class="ad_cont rbig">
+                    <a class="ad_item" href="#">
+                        <img src="images/ad1.png">
+                    </a>
+                </div> 
+                <!-- ads -->
+                <div class="ad_cont rbig">
+                    <a class="ad_item" href="#">
+                        <img src="images/ad2.png">
+                    </a>
+                    <a class="ad_item" href="#">
+                        <img src="images/ad1.png">
+                    </a>
+                    <a class="ad_item" href="#">
+                        <img src="images/ad2.png">
+                    </a>
+                </div> 
             </div>
             <!-- 用户 end -->
 
@@ -177,7 +195,7 @@
         <!-- container end -->
         
         <script src="js/zepto.min.js"></script>
-        <script src="js/common.js"></script>
+        <script src="js/common.js?=2"></script>
 
         <script type="text/javascript">
             //展开
@@ -187,13 +205,14 @@
                 
                 //如果打开再点击不想关闭 就把 if 禁掉
                 if(isopen) {
-                    _this.removeClass('open');
+                    _this.removeClass('open').next('.open_info').slideUp();
                     return false;
                 }
                 //
-                $('.j_open_dowm.open').removeClass('open');
-                _this.addClass('open');
+                $('.j_open_dowm.open').removeClass('open').next('.open_info').slideUp();
+                _this.addClass('open').next('.open_info').slideDown();
             });
+            $('.j_open_dowm').eq(0).trigger('click');
         </script>
     </body>
 </html>

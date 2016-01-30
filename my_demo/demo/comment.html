@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="x-dns-prefetch-control" content="on"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css?=5"/>
+    <script type="text/javascript">
+    /*图片错误*/
+    function nofind(str){
+        var img = event.srcElement;
+        img.src = str || "images/none.png";
+        img.onerror = null;
+    }
+    </script>
+    <title>评价</title>
+    <style>
+        body:after {
+            background-image: url(images/back.png);
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 卡片 -->
+        <div class="card_cont rbig">
+            <!-- 卡片背景 -->
+            <div class="card_bg">
+                <img src="images/user_bg.png">
+            </div>
+            <!-- 卡片信息 -->
+            <div class="card_info">
+                <!-- 用户头像 -->
+                <div class="user_img rAll">
+                    <img src="images/1.jpg" class="rAll">
+                </div>
+                <!-- 用户昵称 -->
+                <p class="user_name">晶晶 · 雷</p>
+
+                <!-- 评价信息 -->
+                <div class="item_cont">
+                    <div class="item_cell">接单数<span class="gray">362</span></div>
+                    <div class="item_cell">评价<span class="gray">200</span></div>
+                </div>
+                    <!-- 评价 -->
+                    <div class="assess_cont border_t">
+                        <div class="assess_title">服务评价</div>
+                        <ul>
+                            <li class="assess_li j_lev" data-rel="很不满意"><i class="icon_heart"></i></li>
+                            <li class="assess_li j_lev" data-rel="不满意"><i class="icon_heart"></i></li>
+                            <li class="assess_li j_lev" data-rel="一般"><i class="icon_heart"></i></li>
+                            <li class="assess_li j_lev" data-rel="满意"><i class="icon_heart"></i></li>
+                            <li class="assess_li j_lev" data-rel="非常满意"><i class="icon_heart"></i></li>
+                        </ul>
+                        <b class="assess_text default j_lev_text">满意程度</b>
+                    </div>
+
+                    <!-- 评论 -->
+                    <div class="form_cont textarea_cont rlarge">
+                        <textarea name="" id="" class="j_text" rows="3" placeholder="我还有说的..." maxlength="140"></textarea>
+                        <span class="number_notice">0</span>
+                    </div>
+
+                    <!-- 提交 -->
+                    <div class="btn_cont">
+                        <button type="submit" class="btn btn_big rNone j_submit">提交评价</button>
+                    </div>
+            </div>
+            <!-- 卡片信息 end -->
+        </div>
+         <!-- 卡片 end -->
+
+    </div>
+    <!-- container end -->
+    
+    <script src="js/zepto.min.js"></script>
+    <script src="js/common.js"></script>
+
+    <script type="text/javascript">
+        //公用 Dom 变量
+        var $lev_text = $('.j_lev_text'),
+            $hearts = $(".icon_heart"),
+            $text = $('.j_text');
+            
+        
+        //评价js
+        $(".j_lev").bind('click', function(){
+            var _this = $(this),
+                rel = _this.data('rel');
+            //文字
+            $lev_text.text(rel);
+            
+            //心跳
+            var _hearts = _this.prevAll('.j_lev').find('i').add(_this.find('i'));
+            _hearts.addClass('full').addClass('heartpop').animationEnd(function(){
+                _hearts.removeClass('heartpop');
+            });
+            _this.nextAll('.j_lev').find('i').removeClass('full');
+            
+        });
+
+        //字数提示
+        var $num = $('.number_notice');
+        $text.bind('input', function(){
+            var val = $(this).val(),
+                len = val.length;
+            $num.text(len);
+        });
+
+        //提交
+        function Submit(){
+            var level = $(".icon_heart.full").length; //等级数
+
+            if(level < 1) {
+                $.errorTip('请先评价服务');
+                $hearts.addClass('heartpop').animationEnd(function(){
+                    $hearts.removeClass('heartpop');
+                });
+                return false;
+            }
+
+            var text = $text.val();
+            if(text.length < 1){
+                $.errorTip('请先评价服务');
+                errorInput($text) //定位错误
+                return false;
+            }
+
+            //开始提交
+            $.showLoad('正在提交...');
+            setTimeout(function(){
+                //提交成功
+                $.hideLoad();
+                $.successTip('评价成功！');
+            }, 2000);
+        }
+
+        $('.j_submit').bind('click', function(){
+            Submit();
+        });
+    </script>
+</body>
+</html>

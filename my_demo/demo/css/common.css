@@ -483,7 +483,7 @@ input::-webkit-inner-spin-button{
     background-color: rgba(2, 176, 1, 0.8)!important;
 }
 .my_tip.tip_error div {
-    background-color: rgba(199, 28, 23, 0.8)!important;
+    background-color: rgba(222, 6, 0, 0.8)!important;
 }
 /*============================= scrolldiv =============================*/
 .scrolldiv {
@@ -836,6 +836,9 @@ body:after{
     .user_name{
         font-size: .8rem;
     }
+    .user_id{
+        font-size: .75rem;
+    }
     .user_img{
         position: relative;
         width: 3.6rem;
@@ -843,6 +846,11 @@ body:after{
         border: .1rem solid #344a7e;
         margin:0 auto .25rem;
         font-size: 0;
+        line-height: 0;
+    }
+    .user_img img{
+        height: 100%;
+        width: 100%;
     }
 
 /*============================= form_cont =============================*/
@@ -856,7 +864,6 @@ body:after{
     }
    .textarea_cont textarea{
         width: 100%;
-        resize: none;
         text-align: justify;
     }
     .number_notice{
@@ -912,9 +919,6 @@ body:after{
     .card_bg {
         min-height: 3rem;
         overflow: hidden;
-    }
-    .card_bg img{
-        width: 100%;
     }
     .card_info {
         margin: -2.5rem 1rem 0;
@@ -1020,11 +1024,7 @@ body:after{
         background-color: rgba(0,0,0,.5);
     }
 
-    .open_info{
-        padding: 0 .3rem 0;
-        max-height: 0;
-        overflow: hidden;
-    }
+
     .open_info .list_li{
         border-bottom: 1px solid #fff;
         color: #fff;
@@ -1046,20 +1046,20 @@ body:after{
         transition-duration: .25s;
         -webkit-transition-duration: .25s;
     }
-    .open_info{
-        transition-duration: .4s;
-        -webkit-transition-duration: .4s;
-    }
-
     .open_title.open .icon_arrow_left{
         transform:rotate(90deg);
         -webkit-transform:rotate(90deg); 
         -webkit-transform-origin: 50% 50%;
     }
-    .open_title.open + .open_info {
-        padding-top: .2rem;
-        max-height: 30rem;
+
+    .open_info{
+        padding: 0 .3rem;
+        overflow: hidden;
+        display: none;
     }
+/*      .open_title.open + .open_info{
+    display: block;
+} */
 
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
     .open_info .list_li{
@@ -1081,7 +1081,7 @@ body:after{
 /*============================= news_cont =============================*/
  
     .news_cont{
-        margin: .3rem 0;
+        margin: .3rem 0 0;
         box-shadow: 0 .1rem .1rem rgba(0,0,0,.2);
         background-color: rgba(0,0,0,.6);
         border-radius:.3rem;
@@ -1149,6 +1149,7 @@ body:after{
         overflow: hidden;
         font-size: 0;
         table-layout: fixed;
+        margin-top: .3rem;
     }
     .ad_item{
         display: table-cell;

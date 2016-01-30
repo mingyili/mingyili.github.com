@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="btn_cont">
-                    <button class="btn btn_big j_submit">领取优惠券</button>
+                    <span class="btn btn_big">领取优惠券</span>
                 </div>
             </div>
 
@@ -77,9 +77,6 @@
     <script src="js/common.js"></script>
 
     <script type="text/javascript">
-        var $phone = $('input[name="phone"]'),
-            phone = '',
-            $code = $('input[name="code"]');
     	//计时程序
         function time(dom, now) {
             if (now == 0) {
@@ -115,59 +112,16 @@
         //手机验证方法
         var parttenphone = /^1[3|4|5|7|8][0-9]\d{8}$/;
         function testPhone(){
-            var temphone = $phone.val();
+            var $phone = $('input[name="phone"]'),
+                phone = $phone.val();
 
-            if(!parttenphone.test(temphone)){
+            if(!parttenphone.test(phone)){
                 $.errorTip("请输入正确的联系方式");
                 errorInput($phone);
                 return false;
             }
-            phone = temphone;
             return true;
         }
-
-        $('.j_submit').bind('click', function(){
-            testPhone();
-            if(!phone) {
-
-                $.errorTip("请输入联系方式");
-                errorInput($phone);
-                return false;
-            } 
-
-            var code = $code.val();
-            if(!code) {
-                $.errorTip("请输入验证码");
-                errorInput($code);
-                return false;
-            }
-
-            //传 code 判断验证码是否正确
-
-            //执行其他程序
-            var _this = $(this);
-            $.showLoad('正在领取...');
-            _this.text('正在领取...').addClass('disabled');
-
-            setTimeout(function(){
-                //领取成功
-                $.hideLoad();
-                _this.text('领取成功').removeClass('disabled')
-                $.showAlert({
-                    text: '恭喜你！<br/>成功领取优惠券。',
-                    yesText: '查看',
-                    onYes: function(){
-                        window.location.href = 'user.html';
-                    },
-                    noText: '取消',
-                    onNo: function(){
-                        window.location.href = 'user.html';
-                    },
-                });
-
-            }, 2000);
-
-        });
     </script>
 </body>
 </html>

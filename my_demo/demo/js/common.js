@@ -1,3 +1,97 @@
+//     Zepto.js  
+//     slideDown slideUp
+;
+(function ($) {
+    /* SlideDown */
+    $.fn.slideDown = function (duration) { 
+        if(this.length < 1 || this.css('display') != 'none') return;
+        duration = duration || 300;
+        
+        var position = this.css('position');
+        this.css({
+            position: 'absolute',
+            visibility: 'hidden',
+        }).show();
+        
+
+        //get naturally height, margin, padding
+        var marginTop = this.css('margin-top'),
+            marginBottom = this.css('margin-bottom'),
+            paddingTop = this.css('padding-top'),
+            paddingBottom = this.css('padding-bottom'),
+            height = this.css('height');
+
+        // set initial css for animation
+        var _this = this;
+        _this.css({
+            position: position,
+            visibility: 'visible',
+            overflow: 'hidden',
+            height: 0,
+            marginTop: 0,
+            marginBottom: 0,
+            paddingTop: 0,
+            paddingBottom: 0,
+            'transition-duration': duration + 'ms',
+            '-webkit-transition-duration': duration + 'ms',
+        });
+        setTimeout(function(){
+            _this.css({
+                height: height,
+                marginTop: marginTop,
+                marginBottom: marginBottom,
+                paddingTop: paddingTop,
+                paddingBottom: paddingBottom,
+            });
+        },1);
+    };
+
+    /* SlideUp */
+    $.fn.slideUp = function (duration) {
+        if (this.length < 1 || this.css("display") == 'none') return false;
+        duration = duration || 300;
+        
+        var _this = this,
+            height = _this.css('height'),
+            marginTop = _this.css('margin-top'),
+            marginBottom = _this.css('margin-bottom'),
+            paddingTop = _this.css('padding-top'),
+            paddingBottom = _this.css('padding-bottom');
+        
+        // set initial css for animation
+        _this.css({
+            height: height,
+            marginTop: marginTop,
+            marginBottom: marginBottom,
+            paddingTop: paddingTop,
+            paddingBottom: paddingBottom,
+            'transition-duration': duration + 'ms',
+            '-webkit-transition-duration': duration + 'ms',
+        });
+        
+        setTimeout(function(){
+            _this.css({
+                height: 0,
+                marginTop: 0,
+                marginBottom: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
+            }).transitionEnd(function(){
+                _this.hide();
+                _this.css({
+                    height: height,
+                    marginTop: marginTop,
+                    marginBottom: marginBottom,
+                    paddingTop: paddingTop,
+                    paddingBottom: paddingBottom
+                });
+            });
+        },1);
+        
+    };
+})(Zepto);
+
+/**/
 Function.prototype.curry = function () {
     var slice = Array.prototype.slice,
         args = slice.apply(arguments),
@@ -246,7 +340,7 @@ window.requestAnimFrame = (function() {
             b = document.createElement("span"),
             chtml = "" ;
         c.style.cssText = "display:none; position: fixed; top: 45%; margin: 0 auto; z-index: 1300; width: 100%; text-align: center;";
-        chtml = "<div style='color: #fff; font-size: .8rem; padding: .4rem .8rem .4rem;margin: 0 auto;display: inline-block; -webkit-border-radius: .2rem; border-radius: .2rem; max-width: 10rem; background: rgba(0, 0, 0, 0.6);'></div>";
+        chtml = "<div style='color: #fff; font-size: .8rem; padding: .45rem .8rem .4rem;margin: 0 auto;display: inline-block; -webkit-border-radius: .2rem; border-radius: .2rem; max-width: 10rem; background: rgba(0, 0, 0, 0.6);'></div>";
         c.innerHTML = chtml;
         c.className = 'my_tip';
         c.firstChild.appendChild(b);
@@ -271,7 +365,6 @@ window.requestAnimFrame = (function() {
         clearTimeout(timer);
         timer = null;
         timer = setTimeout(function(){
-            console.log('close');
             callback();
             timer = null;
         }, time); //确保输停留相应时间
