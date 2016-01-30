@@ -48,14 +48,14 @@
                 </div>
                 <div class="item_cont">
                     <div class="input_cell">
-                        <input type="text" name="code" placeholder="验证码">
+                        <input type="tel" name="code" placeholder="验证码">
                     </div>
                     <div class="item_cell half">
                         <span class="btn btn_big j_send_code">获取验证码</span>
                     </div>
                 </div>
                 <div class="btn_cont">
-                    <span class="btn btn_big">领取优惠券</span>
+                    <span class="btn btn_big j_submit">领取优惠券</span>
                 </div>
             </div>
 
@@ -80,48 +80,95 @@
     	//计时程序
         function time(dom, now) {
             if (now == 0) {
-                dom.removeClass("disabled");
-                dom.html('发送验证码');
+                endtime(dom);
             } else {
                 dom.addClass("disabled");
                 now--;
-                dom.html(now + 's后再发'); //
-                setTimeout(function() {
+                dom.html(now + 's后再发');
+                var timer = setTimeout(function() {
                     time(dom, now);
                 }, 1000);
+                dom.data('timer', timer);
             }
+        }
+        //中止计时
+        function endtime(dom){
+            var timer = dom.data('timer');
+            dom.removeClass("disabled");
+            dom.html('发送验证码');
+            clearTimeout(timer);
+            timer = null;
+            dom.data('timer', timer);
+        }
+        //验证并获取手机号
+        function getPhone(){
+            var parttenphone = /^1[3|4|5|7|8][0-9]\d{8}$/;
+            var $phone = $('input[name="phone"]'),
+                phone = $phone.val();
+
+            if(!phone || !parttenphone.test(phone)){
+                $.errorTip("请输入正确的联系方式");
+                errorInput($phone);
+                return false;
+            }
+            return phone;
+        }
+        //验证并获取 code
+        function getCode(){
+            var $code = $('input[name="code"]'),
+                code = $code.val();
+
+            if(!code){
+                $.errorTip("请输入验证码");
+                errorInput($code);
+                return false;
+            }
+            return code;
         }
 
         //发送验证码
         $('.j_send_code').bind('click', function() {
             //验证手机号
-            if (!testPhone()) return;
+            var phone = getPhone();
+            if (!phone) return false;
             
-            //
             var _this = $(this),
                 disabled = _this.hasClass('disabled');
             //开始计时
             if (!disabled) {
-                //调用发送程序
                 $.successTip("发送成功，请耐心等待");
-                _this.addClass('disabled');
+                //调用发送程序
                 time(_this, 60);
             }
         });
 
-        //手机验证方法
-        var parttenphone = /^1[3|4|5|7|8][0-9]\d{8}$/;
-        function testPhone(){
-            var $phone = $('input[name="phone"]'),
-                phone = $phone.val();
+        $('.j_submit').bind('click', function(){
+            //验证手机号
+            var phone = getPhone()
+            if(!phone) return false;
+            //验证验证码
+            var code = getCode();
+            if(!code) return false;
 
-            if(!parttenphone.test(phone)){
-                $.errorTip("请输入正确的联系方式");
-                errorInput($phone);
-                return false;
-            }
-            return true;
-        }
+            var _this = $(this);
+            _this.text('正在提交...').addClass('disabled');
+            $.showLoad('正在领取...');
+            
+            setTimeout(function(){
+                $.hideLoad();
+                _this.text('领取成功').removeClass('disabled');
+                
+                $.showAlert({
+                    text : '<b class="default">恭喜您！</b><br/>优惠券领取成功！',
+                    yesText : '快去看看',
+                    onYes : function(){
+                        window.location.href = "user.html";
+                    },
+                    noText: '算了'
+                })
+
+            }, 2000);
+        });
     </script>
 </body>
 </html>

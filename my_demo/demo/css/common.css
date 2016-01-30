@@ -945,7 +945,7 @@ body:after{
 /*============================= share_cont =============================*/
     .share_cont{
         padding: 4rem 0 0; 
-        margin: 1rem;
+        margin: 1.5rem 2rem;
     }
     .share_cont .input_cell{
         font-size: 1rem;
