@@ -164,6 +164,14 @@
 			yesStyle: "b_blue", 
 			noText: "取消",   //值为空默认为没有取消按钮，也不会绑定事件
 			animte: "fadeAnim",
+			onYes: function(){
+				$.showAlert({
+					title: "这是标题1",   //值为空默认为没有标题
+					text: "这是弹窗信息",
+					yesText: "好的",
+					animte: "popAnim"
+				});
+			}
 		});
 	});
 	//底部工具

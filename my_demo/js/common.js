@@ -85,45 +85,35 @@ window.requestAnimFrame = (function() {
  $.Mask //抛出创建的mask div, 调用, 绑定事件
  */
 (function($){
-    var alert, hasmask;
+    var alert;
     $.showAlert = function(option) { //定义弹窗
-        if(alert) {
-            alert.div.remove();
-            alert = null;
-            if($.Mask){
-                $.Mask.remove();
-                $.Mask = null;
-            }
-        }
+        if(alert) $.hideAlert("fadeAnim", true);
         var opt = {
             title: "",          //弹窗标题
             text: "弹窗提示",   //弹窗文字
             yesText: "好的",     //确定按钮文字
             yesStyle: "b_blue",       //确定按钮样式
-            onYes: function(){return true;},        //确定按钮的事件
+            onYes: null,        //确定按钮的事件
             noText: "",          //取消按钮文字
             noStyle: "b_white",        //取消按钮样式
-            onNo: function(){return true;},         //取消按钮的事件
+            onNo: null,         //取消按钮的事件
             animte: "fadeAnim", //弹出动画
-            hasMask: true,         //显示遮罩
             clickMaskHide: false    //点击遮罩关闭
         };
         $.extend(opt, option);
 
-        hasmask = opt.hasMask;
         alert = alert || initAlert();
         alert.text.html(opt.text);
         alert.btnY.html(opt.yesText);
         alert.btnY[0].className = "btn " + opt.yesStyle;
         alert.btnY.bind('click', function(){
-            (opt.onYes() !== false) && $.hideAlert(opt.animte);
-            //当onYes return false 时候就不关闭alert
+            opt.onYes ? opt.onYes() : $.hideAlert(opt.animte);
         });
         if(opt.noText){ //显示取消按钮
             alert.btnN[0].className = "btn btn_half " + opt.noStyle;
             alert.btnN.css('display','table-cell').html(opt.noText);
             alert.btnN.bind('click', function(){
-                (opt.onNo() !== false) && $.hideAlert(opt.animte);
+                opt.onNo ? opt.onNo() : $.hideAlert(opt.animte);
             }); //绑定取消事件
         }else{
             alert.btnN.hide();
@@ -138,20 +128,22 @@ window.requestAnimFrame = (function() {
         
         //打开
         alert.div.open(opt.animte); //显示
-        hasmask && $.showMask(); //显示遮罩
-        if(hasmask && opt.clickMaskHide){
+        $.showMask(); //显示遮罩
+        if(opt.clickMaskHide){
             $.Mask.bind('click', function(){ 
                 $.hideAlert();
             });
         }
         $.reshowAlert = function(){ //再次显示弹窗
             alert.div.open(opt.animte); //显示
-            hasmask && $.showMask(); //显示遮罩
+            $.showMask(); //显示遮罩
         }
     };
-    $.hideAlert = function(animte){ //关闭弹窗
-        alert.div.close(animte);
-        hasmask && $.hideMask();
+    $.hideAlert = function(animte, des){ //关闭弹窗
+        alert.div.close(animte, null, des);
+        $.hideMask();
+        alert = null;
+        $.Mask = null;
     };
     function initAlert(){//生成弹窗信息层
         var c = document.createElement("div");
@@ -201,9 +193,9 @@ window.requestAnimFrame = (function() {
         $.Mask.open();
     }
     $.hideMask = function(){
-        setTimeout(function(){
-            $.Mask.close();
-        }, 200);
+        $.Mask.close();
+        /*setTimeout(function(){
+        }, 200);*/
     }
     function initMask(index){ //创建遮罩
         index = index || 10600; 
@@ -230,7 +222,7 @@ window.requestAnimFrame = (function() {
     }; */
     var $actions;
     $.showActions = function(btns, cancal){
-        $.closeActions();
+        $.hideActions(true);
 
         var $temp = initActions(btns, cancal),
             $cancal = $temp.cancal;
@@ -241,7 +233,7 @@ window.requestAnimFrame = (function() {
         var $btns = $actions.find('.j_act_btn');
         $btns.each(function (index, ele) {
             $(ele).bind('click', function(){
-                $.closeActions();
+                $.hideActions(true);
                 if (btns[index].onClick) btns[index].onClick($(this));
             });
         });
@@ -259,17 +251,10 @@ window.requestAnimFrame = (function() {
             $.hideActions();
         });
     };
-    $.hideActions = function(){
+    $.hideActions = function(desEvent){
         if($actions) {
             $actions.close('slideUpAnim', null, true);
-            $.hideMask();
-            $actions = null;
-        }
-    };
-    $.closeActions = function(){
-        if ($actions) {
-            $actions.close('slideUpAnim', null, true);
-            $.Mask.unbind('click');
+            desEvent ? $.Mask.unbind('click') : $.hideMask();
             $actions = null;
         }
     };
@@ -537,7 +522,6 @@ function stopProp(e){
         $.hideLoad();
         $.hideMask();
 
-        
         var _this = this;
         if (layerMask && layerMask.hasClass('hidden')) {
             layerMask.remove();
