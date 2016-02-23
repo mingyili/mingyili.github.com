@@ -62,6 +62,39 @@ window.requestAnimFrame = (function() {
         }
     };
 })($);
+
+//移动端元素移除时再移回可视区域展示
+(function($){
+    $.fn.notInView = function(){
+        var pos = this[0].getBoundingClientRect(),
+            $window = $(window),
+            view = {
+                height: $window.height(),
+                width: $window.width()
+            };
+        if (pos.top < 0 || pos.top > view.height || pos.left < 0 || pos.left > view.width) {
+            pos.viewHeight = view.height;
+            pos.viewWidth = view.width;
+            return pos;
+        }
+        return false;
+    }
+    $.fn.moveToView = function(perc){ //百分比
+        this.css({
+            'transform': 'translate3d(0, 0, 0)',
+            '-webkit-transform': 'translate3d(0, 0, 0)'
+        });
+        var pos = this.notInView();
+        if (pos) {
+            perc = perc || 0;
+            var y = perc * pos.viewHeight - pos.top;
+            this.css({
+                'transform': 'translate3d(0, '+ y +'px, 0)',
+                '-webkit-transform': 'translate3d(0, '+ y +'px, 0)'
+            });
+        }
+    }
+})($);
 /**
  //弹窗
  $.showAlert({
@@ -87,7 +120,7 @@ window.requestAnimFrame = (function() {
 (function($){
     var alert;
     $.showAlert = function(option) { //定义弹窗
-        if(alert) $.hideAlert("fadeAnim", true);
+        if(alert) $.hideAlert(null, true);
         var opt = {
             title: "",          //弹窗标题
             text: "弹窗提示",   //弹窗文字
@@ -139,11 +172,10 @@ window.requestAnimFrame = (function() {
             $.showMask(); //显示遮罩
         }
     };
-    $.hideAlert = function(animte, des){ //关闭弹窗
-        alert.div.close(animte, null, des);
-        $.hideMask();
+    $.hideAlert = function(animte, newOne){ //关闭弹窗
+        alert.div.close(animte, null, newOne);
+        newOne ? $.Mask.unbind('click') : $.hideMask();
         alert = null;
-        $.Mask = null;
     };
     function initAlert(){//生成弹窗信息层
         var c = document.createElement("div");
@@ -317,16 +349,18 @@ window.requestAnimFrame = (function() {
         tip = tip || initTip();
         tip.text.html(text || "提示信息");
         tip.div.open(animte);
-        tip.div[0].className = ("my_tip");
+        tip.div[0].className = "my_tip";
+        tip.div.css('margin-top', - ( tip.div.height() * .5 ) );
+        tip.div.moveToView(.3);
         if(time !== 0) waitTimer(time || 1000, $.closeTip);
     },
     $.successTip = function(text, time, animte) { //展示提示信息
         $.showTip(text, time, animte);
-        tip.div[0].className = ("my_tip tip_success");
+        tip.div[0].className = "my_tip tip_success";
     },
     $.errorTip = function(text, time, animte) { //展示提示信息
         $.showTip(text, time, animte);
-        tip.div[0].className = ("my_tip tip_error");
+        tip.div[0].className = "my_tip tip_error";
     },
     $.closeTip = function(animte) { //关闭提示信息
         tip && tip.div.close(animte);
@@ -336,7 +370,7 @@ window.requestAnimFrame = (function() {
         var c = document.createElement("div"),
             b = document.createElement("span"),
             chtml = "" ;
-        c.style.cssText = "display:none; z-index: 11001; position: fixed; top: 45%; margin: 0 auto; width: 100%; text-align: center;";
+        c.style.cssText = "display:none; z-index: 11001; position: fixed; top: 50%; margin:-1rem auto 0; width: 100%; text-align: center;";
         chtml = "<div style='color: #fff; font-size: .8rem; padding: .45rem .8rem .4rem;margin: 0 auto;display: inline-block; -webkit-border-radius: .2rem; border-radius: .2rem; max-width: 10rem; background: rgba(0, 0, 0, 0.6);'></div>";
         c.innerHTML = chtml;
         c.className = 'my_tip';
@@ -445,7 +479,8 @@ window.requestAnimFrame = (function() {
                 });
                 follow.div.bind('touchmove', stopProp); //阻止滚动
             }
-            $.FollowImg && follow.div.css('top', $(body).scrollTop());
+            follow.div.css('top', $('body').scrollTop());
+            follow.div.find('.follow_cont').css('margin-top', $(window).height() * .15);
             follow.div.open(animte); //动画显示
         }
     }
@@ -458,7 +493,7 @@ window.requestAnimFrame = (function() {
             chtml = "", dhtml = "";
         //初始化div    
         c.style.cssText = "z-index:11000; position:absolute; width:100%; height:100%; top:0; left:0; background-color:rgba(0,0,0,.6);";
-        chtml = "<div style='width:8rem; margin:5rem auto 0; padding: 1rem 1.3rem .4rem; background-color:#fff; text-align:center;'><img src='" + $.FollowImg + "' onerror='nofind()' style='width:100%;'/><p style='font-size: .6rem; margin-top: .5rem;'>长按二维码，识别并关注我们</p>";
+        chtml = "<div class='follow_cont' style='width:8rem; height: 9.8rem; margin:0 auto; padding: 1rem 1.3rem .4rem; background-color:#fff; text-align:center;'><img src='" + $.FollowImg + "' onerror='nofind()' style='width:100%;'/><p style='font-size: .6rem; margin-top: .5rem;'>长按二维码，识别并关注我们</p>";
         
         c.innerHTML = chtml;
         dhtml = "<span class='wx_closeIcon'><span/>";
@@ -545,7 +580,6 @@ function stopProp(e){
 
         setTimeout(function(){
             layerMask.close();
-            //layerMask = null;
         }, 200);
     };
 
@@ -561,9 +595,10 @@ $(".j_follow").live('click', function(){
 
 //表单错误提示
 (function(){
-    $.fn.errorInput = function(){
+    $.fn.errorInput = function(msg, time){
         this.parent().addClass("error");
         this.focus();
+        msg && $.errorTip(msg, time);
         this.bind("input", function(){
             $(this).removeError();
         });
@@ -573,6 +608,7 @@ $(".j_follow").live('click', function(){
         this.parent().removeClass("error");   
     }
 })($);
+
 //     Zepto.js  
 //     slideDown slideUp
 ;(function ($) {

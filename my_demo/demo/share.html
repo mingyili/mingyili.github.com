@@ -107,8 +107,7 @@
                 phone = $phone.val();
 
             if(!phone || !parttenphone.test(phone)){
-                $.errorTip("请输入正确的联系方式");
-                errorInput($phone);
+                $phone.errorInput("请输入正确的联系方式");
                 return false;
             }
             return phone;
@@ -119,8 +118,7 @@
                 code = $code.val();
 
             if(!code){
-                $.errorTip("请输入验证码");
-                errorInput($code);
+                $code.errorInput("请输入验证码");
                 return false;
             }
             return code;

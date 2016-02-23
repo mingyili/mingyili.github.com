@@ -127,8 +127,7 @@
 
             var text = $text.val();
             if(text.length < 1){
-                $.errorTip('请先评价服务');
-                errorInput($text) //定位错误
+                $text.errorInput('请先评价服务') //定位错误
                 return false;
             }
 
@@ -138,7 +137,7 @@
                 //提交成功
                 $.hideLoad();
                 $.successTip('评价成功！');
-                setTimeout(function(){window.location.href="user.html";}, 1000);
+                setTimeout(function(){ window.location.href="user.html"; }, 1000);
             }, 2000);
         }
 
