@@ -32,12 +32,13 @@ window.requestAnimFrame = (function() {
  */
 (function($){
     $.fn.open = function(anim, time){
-        var _this = $(this);
+        var _this = this; time = time || 400;
+        if ( _this.height() > 0 ) return;
         
         if(_this.hasClass("hidden")){ 
             window.requestAnimFrame(_this.open.curry(anim, time));
         }else{
-            time && _this.css("-webkit-animation-duration", time + "ms");
+            _this.css("-webkit-animation-duration", time + "ms");
             anim = anim || "fadeAnim";
             _this.show().addClass(anim);
             _this.addClass("shown").animationEnd(function () {
@@ -47,11 +48,12 @@ window.requestAnimFrame = (function() {
         }
     };
     $.fn.close = function(anim, time, des){ 
-        var _this = $(this);
+        var _this = this; time = time || 400;
+        if ( _this.height() <= 0 ) return;
         if(_this.hasClass("shown")){ //如果显示动画还未执行完毕，过300ms再执行
             window.requestAnimFrame(_this.close.curry(anim, time));
         }else{
-            time && _this.css("-webkit-animation-duration", time+"ms");
+            _this.css("-webkit-animation-duration", time + "ms");
             anim = anim || "fadeAnim";
             _this.addClass(anim);
             _this.addClass("hidden").animationEnd(function(e){
@@ -119,7 +121,9 @@ window.requestAnimFrame = (function() {
  */
 (function($){
     var alert;
+    //$.showLastAlert = function(){ return false; };
     $.showAlert = function(option) { //定义弹窗
+        $.hideActions(true);
         $.hideAlert(null, true);
         var opt = {
             title: "",          //弹窗标题
@@ -134,8 +138,7 @@ window.requestAnimFrame = (function() {
             clickMaskHide: false    //点击遮罩关闭
         };
         $.extend(opt, option);
-
-        alert = alert || initAlert();
+        alert = initAlert();
         alert.text.html(opt.text);
         alert.btnY.html(opt.yesText);
         alert.btnY[0].className = "btn " + opt.yesStyle;
@@ -159,24 +162,25 @@ window.requestAnimFrame = (function() {
             alert.textcont.css('padding-top', '1rem');
         }
         
-        //打开
-        alert.div.open(opt.animte); //显示
-        $.showMask(); //显示遮罩
+        alert.div.open(opt.animte);
+        $.showMask(); 
+
         if(opt.clickMaskHide){
             $.Mask.bind('click', function(){ 
                 $.hideAlert(opt.animte);
             });
         }
-        $.reshowAlert = function(){ //再次显示弹窗
+        //再次显示弹窗
+        /*$.showLastAlert = function(){ 
             alert.div.open(opt.animte); //显示
             $.showMask(); //显示遮罩
-        }
+        }*/
     };
     $.hideAlert = function(animte, unbind){ //关闭弹窗
         if (!alert) return;
         alert.div.close(animte, null, true);
-        $.hideMask(unbind);
-        alert = null;
+        if (unbind) $.Mask.unbind('click'), alert = null;           
+        else $.hideMask();
     };
     function initAlert(){//生成弹窗信息层
         var c = document.createElement("div");
@@ -225,8 +229,8 @@ window.requestAnimFrame = (function() {
         if ($.Mask.height() > 0 ) return false;
         $.Mask.open();
     }
-    $.hideMask = function(unbind){
-        unbind ? $.Mask.unbind('click') : setTimeout('$.Mask.close()', 200);
+    $.hideMask = function(){
+        setTimeout('$.Mask.close()', 100);
     }
     function initMask(index){ //创建遮罩
         index = index || 10600; 
@@ -264,11 +268,9 @@ window.requestAnimFrame = (function() {
         var $btns = $actions.find('.j_act_btn');
         $btns.each(function (index, ele) {
             $(ele).bind('click', function(){
-                $.hideActions(true);
                 if (btns[index].onClick) btns[index].onClick($(this));
             });
         });
-        
         //事件绑定
         $cancal && $cancal.bind('click', function(){
             $.hideActions();
@@ -285,9 +287,14 @@ window.requestAnimFrame = (function() {
     $.hideActions = function(unbind){
         if(!$actions) return;
         $actions.close('slideUpAnim', null, true);
-        $.hideMask(unbind);
-        $actions = null;
+        if (unbind) $.Mask.unbind('click'), $actions = null;
+        else $.hideMask();
     };
+/*    $.showLastActions = function(){
+        if(!$actions) return false;
+        $actions.open('slideUpAnim');
+        $.showMask();
+    };*/
 
     function initActions(btns, cancal){
         var c = document.createElement("div"),
@@ -550,35 +557,37 @@ function stopProp(e){
 }
 //自定义弹出层
 (function($){
-    var layerMask = "", layer;
+    var layer;
     //打开层
     $.fn.showLayer = function(anim, nohide){
-        if (layer) layer.hideLayer(null, true); //关闭layer
+        $.hideActions();
+        $.hideAlert()
+        layer && layer.hideLayer(null, true);
+        
+        !$.layerMask && ($.layerMask = $.newMask(10200));
+        layer = this;
 
-        !layerMask && (layerMask = $.newMask(10200));
-        if (layerMask.height() <= 0 ) layerMask.open();
-
-        var layer = this;
+        if ($.layerMask.height() <= 0 ) $.layerMask.open();
         layer.open(anim);
 
-        !nohide && layerMask.bind('click', function(){
+        !nohide && $.layerMask.bind('click', function(){
             layer.hideLayer(anim);
         });
         layer.find('.close').bind('click', function(){
             layer.hideLayer(anim);
         });
+
     };
     //关闭层
     $.fn.hideLayer = function(anim, unbind){
-        this.close(anim);
-        (unbind && layerMask) ? layerMask.unbind('click') : setTimeout('layerMask.close()', 200);
+        if (this.height() > 0) this.close(anim);
+        if (unbind) $.layerMask.unbind('click'), layer = null;
+        else setTimeout('$.layerMask.close()', 50);
     };
     //关闭labyer
-    $.hideLayer = function(anim){
-        if (!layer) return;
-        layer.hideLayer(anim);
-        layer = null;
-    };    
+    $.hideLayer = function(anim, unbind){
+        layer && layer.hideLayer(anim, unbind);
+    };
 })($);
 
 //分享，关注

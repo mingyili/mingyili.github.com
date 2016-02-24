@@ -10,7 +10,7 @@
 <meta http-equiv="x-dns-prefetch-control" content="on">
 <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon" >
 <link rel="stylesheet" type="text/css" href="css/common.css?=1">
-<title>$.js 首页</title>
+<title>My.js 首页</title>
 <style>
 </style>
 </head>
@@ -141,11 +141,7 @@
 
 <script type="text/javascript">
 	$.FollowImg = "images/2Dcode.png";
-	
-	$("#j_popClose").bind('click', function(){
-		$("#J_pop").hideLayer('popAnim');
-	});
-	
+
 	////
 	$(".j_alert1").bind('click', function(){
 		$.showAlert({
@@ -169,7 +165,8 @@
 					title: "这是标题1",   //值为空默认为没有标题
 					text: "这是弹窗信息",
 					yesText: "好的",
-					animte: "popAnim"
+					animte: "popAnim",
+					clickMaskHide: true
 				});
 			}
 		});
@@ -184,7 +181,6 @@
 						{
 							text: '第二次',
 							onClick: function(){
-								$.hideActions();
 								$("#J_pop").showLayer('popAnim');
 							},
 						}
