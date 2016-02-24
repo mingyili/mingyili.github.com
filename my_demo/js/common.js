@@ -120,7 +120,7 @@ window.requestAnimFrame = (function() {
 (function($){
     var alert;
     $.showAlert = function(option) { //定义弹窗
-        if(alert) $.hideAlert(null, true);
+        $.hideAlert(null, true);
         var opt = {
             title: "",          //弹窗标题
             text: "弹窗提示",   //弹窗文字
@@ -164,7 +164,7 @@ window.requestAnimFrame = (function() {
         $.showMask(); //显示遮罩
         if(opt.clickMaskHide){
             $.Mask.bind('click', function(){ 
-                $.hideAlert();
+                $.hideAlert(opt.animte);
             });
         }
         $.reshowAlert = function(){ //再次显示弹窗
@@ -172,9 +172,10 @@ window.requestAnimFrame = (function() {
             $.showMask(); //显示遮罩
         }
     };
-    $.hideAlert = function(animte, newOne){ //关闭弹窗
-        alert.div.close(animte, null, newOne);
-        newOne ? $.Mask.unbind('click') : $.hideMask();
+    $.hideAlert = function(animte, unbind){ //关闭弹窗
+        if (!alert) return;
+        alert.div.close(animte, null, true);
+        $.hideMask(unbind);
         alert = null;
     };
     function initAlert(){//生成弹窗信息层
@@ -224,10 +225,8 @@ window.requestAnimFrame = (function() {
         if ($.Mask.height() > 0 ) return false;
         $.Mask.open();
     }
-    $.hideMask = function(){
-        $.Mask.close();
-        /*setTimeout(function(){
-        }, 200);*/
+    $.hideMask = function(unbind){
+        unbind ? $.Mask.unbind('click') : setTimeout('$.Mask.close()', 200);
     }
     function initMask(index){ //创建遮罩
         index = index || 10600; 
@@ -283,12 +282,11 @@ window.requestAnimFrame = (function() {
             $.hideActions();
         });
     };
-    $.hideActions = function(desEvent){
-        if($actions) {
-            $actions.close('slideUpAnim', null, true);
-            desEvent ? $.Mask.unbind('click') : $.hideMask();
-            $actions = null;
-        }
+    $.hideActions = function(unbind){
+        if(!$actions) return;
+        $actions.close('slideUpAnim', null, true);
+        $.hideMask(unbind);
+        $actions = null;
     };
 
     function initActions(btns, cancal){
@@ -550,41 +548,39 @@ function stopProp(e){
     e.preventDefault();
     e.stopPropagation();
 }
+//自定义弹出层
 (function($){
-    var layerMask = "";
+    var layerMask = "", layer;
     //打开层
     $.fn.showLayer = function(anim, nohide){
-        $.hideLoad();
-        $.hideMask();
+        if (layer) layer.hideLayer(null, true); //关闭layer
 
-        var _this = this;
-        if (layerMask && layerMask.hasClass('hidden')) {
-            layerMask.remove();
-            layerMask = null;   
-        }
         !layerMask && (layerMask = $.newMask(10200));
         if (layerMask.height() <= 0 ) layerMask.open();
-        _this.open(anim);
+
+        var layer = this;
+        layer.open(anim);
 
         !nohide && layerMask.bind('click', function(){
-            _this.hideLayer(anim);
+            layer.hideLayer(anim);
         });
-        _this.find('.close').bind('click', function(){
-            _this.hideLayer(anim);
+        layer.find('.close').bind('click', function(){
+            layer.hideLayer(anim);
         });
     };
     //关闭层
-    $.fn.hideLayer = function(anim, des){
-        this.close(anim, null, des);
-        layerMask.unbind('click');
-
-        setTimeout(function(){
-            layerMask.close();
-        }, 200);
+    $.fn.hideLayer = function(anim, unbind){
+        this.close(anim);
+        (unbind && layerMask) ? layerMask.unbind('click') : setTimeout('layerMask.close()', 200);
     };
-
-    
+    //关闭labyer
+    $.hideLayer = function(anim){
+        if (!layer) return;
+        layer.hideLayer(anim);
+        layer = null;
+    };    
 })($);
+
 //分享，关注
 $(".j_share").live('click', function(){
     $.showShare();
@@ -642,6 +638,7 @@ $(".j_follow").live('click', function(){
             marginBottom: 0,
             paddingTop: 0,
             paddingBottom: 0,
+            'transition-property': 'all',
             'transition-duration': duration + 'ms',
             '-webkit-transition-duration': duration + 'ms',
             'transform': 'translate3d(0, 0, 0)',
@@ -655,7 +652,6 @@ $(".j_follow").live('click', function(){
                 paddingTop: paddingTop,
                 paddingBottom: paddingBottom,
                 'transform': 'translate3d(0, 0, 0)',
-                '-webkit-transform': 'translate3d(0, 0, 0)',
             });
         },1);
     };
@@ -679,6 +675,7 @@ $(".j_follow").live('click', function(){
             marginBottom: marginBottom,
             paddingTop: paddingTop,
             paddingBottom: paddingBottom,
+            'transition-property': 'all',
             'transition-duration': duration + 'ms',
             '-webkit-transition-duration': duration + 'ms',
             'transform': 'translate3d(0, 0, 0)',
@@ -701,7 +698,6 @@ $(".j_follow").live('click', function(){
                     paddingTop: paddingTop,
                     paddingBottom: paddingBottom,
                     'transform': 'translate3d(0, 0, 0)',
-                    '-webkit-transform': 'translate3d(0, 0, 0)',
                 });
             });
         },1);
