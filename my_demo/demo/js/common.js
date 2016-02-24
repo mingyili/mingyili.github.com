@@ -120,6 +120,7 @@ window.requestAnimFrame = (function() {
 (function($){
     var alert;
     $.showAlert = function(option) { //定义弹窗
+        $.hideActions(true);
         $.hideAlert(null, true);
         var opt = {
             title: "",          //弹窗标题
@@ -135,7 +136,7 @@ window.requestAnimFrame = (function() {
         };
         $.extend(opt, option);
 
-        alert = alert || initAlert();
+        alert = initAlert();
         alert.text.html(opt.text);
         alert.btnY.html(opt.yesText);
         alert.btnY[0].className = "btn " + opt.yesStyle;
@@ -167,16 +168,11 @@ window.requestAnimFrame = (function() {
                 $.hideAlert(opt.animte);
             });
         }
-        $.reshowAlert = function(){ //再次显示弹窗
-            alert.div.open(opt.animte); //显示
-            $.showMask(); //显示遮罩
-        }
     };
     $.hideAlert = function(animte, unbind){ //关闭弹窗
         if (!alert) return;
         alert.div.close(animte, null, true);
         $.hideMask(unbind);
-        alert = null;
     };
     function initAlert(){//生成弹窗信息层
         var c = document.createElement("div");
@@ -254,6 +250,7 @@ window.requestAnimFrame = (function() {
     var $actions;
     $.showActions = function(btns, cancal){
         $.hideActions(true);
+        $.hideAlert(null, true);
 
         var $temp = initActions(btns, cancal),
             $cancal = $temp.cancal;
@@ -264,7 +261,6 @@ window.requestAnimFrame = (function() {
         var $btns = $actions.find('.j_act_btn');
         $btns.each(function (index, ele) {
             $(ele).bind('click', function(){
-                $.hideActions(true);
                 if (btns[index].onClick) btns[index].onClick($(this));
             });
         });
@@ -286,7 +282,6 @@ window.requestAnimFrame = (function() {
         if(!$actions) return;
         $actions.close('slideUpAnim', null, true);
         $.hideMask(unbind);
-        $actions = null;
     };
 
     function initActions(btns, cancal){
@@ -550,18 +545,19 @@ function stopProp(e){
 }
 //自定义弹出层
 (function($){
-    var layerMask = "", layer;
+    var layer;
     //打开层
     $.fn.showLayer = function(anim, nohide){
-        if (layer) layer.hideLayer(null, true); //关闭layer
+        $.hideActions();
+        $.hideAlert();
+        if ($.layerMask) $.layerMask.unbind('click'); //关闭layer
+        else $.layerMask = $.newMask(10200);
+        layer = this;
 
-        !layerMask && (layerMask = $.newMask(10200));
-        if (layerMask.height() <= 0 ) layerMask.open();
-
-        var layer = this;
+        if ($.layerMask.height() <= 0 ) $.layerMask.open();
         layer.open(anim);
 
-        !nohide && layerMask.bind('click', function(){
+        !nohide && $.layerMask.bind('click', function(){
             layer.hideLayer(anim);
         });
         layer.find('.close').bind('click', function(){
@@ -571,13 +567,11 @@ function stopProp(e){
     //关闭层
     $.fn.hideLayer = function(anim, unbind){
         this.close(anim);
-        (unbind && layerMask) ? layerMask.unbind('click') : setTimeout('layerMask.close()', 200);
+        setTimeout('$.layerMask.close()', 200);
     };
     //关闭labyer
     $.hideLayer = function(anim){
-        if (!layer) return;
-        layer.hideLayer(anim);
-        layer = null;
+        layer && layer.hideLayer(anim);
     };    
 })($);
 
