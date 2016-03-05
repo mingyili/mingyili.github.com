@@ -127,7 +127,11 @@
 
             var text = $text.val();
             if(text.length < 1){
-                $text.errorInput('请先评价服务') //定位错误
+                $text.errorInput() //定位错误
+                setTimeout(function(){
+                    $('.j_submit').moveToView(.9);
+                    $.errorTip('请先填写服务评价');
+                }, 100);
                 return false;
             }
 

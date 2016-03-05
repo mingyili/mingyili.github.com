@@ -63,35 +63,51 @@ window.requestAnimFrame = (function() {
     };
 })($);
 
-//移动端元素移除时再移回可视区域展示
+//将元素移回可视区域展示
 (function($){
-    $.fn.notInView = function(){
+    $.fn.notInView = function(perc) {
+        perc = perc || 0;
         var pos = this[0].getBoundingClientRect(),
             $window = $(window),
             view = {
                 height: $window.height(),
                 width: $window.width()
-            };
-        if (pos.top < 0 || pos.top > view.height || pos.left < 0 || pos.left > view.width) {
+            },
+            minTop = perc * ( view.height - pos.height ); //最小距离，判断元素是否在想要的位置
+
+        if (pos.top < minTop || pos.top > view.height || pos.left < 0 || pos.left > view.width) {
             pos.viewHeight = view.height;
             pos.viewWidth = view.width;
             return pos;
         }
         return false;
     }
-    $.fn.moveToView = function(perc){ //百分比
-        this.css({
-            'transform': 'translate3d(0, 0, 0)',
-            '-webkit-transform': 'translate3d(0, 0, 0)'
-        });
-        var pos = this.notInView();
-        if (pos) {
-            perc = perc || 0;
-            var y = perc * pos.viewHeight - pos.top;
+    $.fn.moveToView = function(perc) { //百分比
+        var type = this.css('position');
+        if( type !== 'fixed' ) { //fixed 布局之外的page滚动到相应位置
+            var pos = this.notInView(perc);
+            if (pos) {
+                var $window = $(window),
+                    oldScrollY = $window.scrollTop(),
+                    scrollY = oldScrollY + pos.top - perc * ( pos.viewHeight - pos.height ); 
+
+                $(window).scrollTop(scrollY);
+            };
+        } 
+        else {
             this.css({
-                'transform': 'translate3d(0, '+ y +'px, 0)',
-                '-webkit-transform': 'translate3d(0, '+ y +'px, 0)'
+                'transform': 'translate3d(0, 0, 0)',
+                '-webkit-transform': 'translate3d(0, 0, 0)'
             });
+            var pos = this.notInView(perc);
+            if (pos) {
+                perc = perc || 0;
+                var y = perc *( pos.viewHeight - pos.height ) - pos.top;
+                this.css({
+                    'transform': 'translate3d(0, '+ y +'px, 0)',
+                    '-webkit-transform': 'translate3d(0, '+ y +'px, 0)'
+                });
+            }
         }
     }
 })($);
@@ -592,7 +608,6 @@ $(".j_follow").live('click', function(){
         this.bind("input", function(){
             $(this).removeError();
         });
-        
     }
     $.fn.removeError = function(){
         this.parent().removeClass("error");   
