@@ -1,0 +1,125 @@
+<!-- page start -->
+<div class="page act_diy" id='actbindcard' data-js="act.js" data-css='cash.css'>
+	<!-- content start -->
+    <div class="content">
+		<div class="banner">
+			<img src="{$HOST_STATIC}/licai/dist/wbf/img/wbfact.png" alt="">
+		</div>
+        <div class="cont-margin stepA mt-big">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">手机号</div>
+                                <div class="item-input">
+                                    <input type="tel" placeholder="手机号" class="j_phone">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">验证码</div>
+                                <div class="item-input border-r">
+                                    <input type="tel" placeholder="">
+                                    <!-- <i class="icon-close j_clear_input"></i> -->
+                                </div>
+                                <div class="item-button img"><img src="{$HOST_STATIC}/licai/dist/wbf/img/code.jpg" alt=""></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cont-margin cont-padded mt-big">
+                <a class="button button-fill button-big j_send_msg">下一步</a>
+                <p class="notice">信息绑定成功后即可获得现金红包</p>
+            </div>
+        </div>
+
+        <div class="stepB" style="display:none;">
+            <p class="info">
+                我们已发送短信至手机 <span class="j_phone_text"></span><br/>请输入短信中的验证码
+            </p>
+            
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">验证码</div>
+                                <div class="item-input border-r">
+                                    <input type="tel" placeholder="验证码">
+                                    <i class="icon-close j_clear_input"></i>
+                                </div>
+                                <div class="item-button j_send_code">发送验证码</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">持卡人</div>
+                                <div class="item-input">
+                                    <input type="tel" placeholder="请输入您的姓名">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">身份证号</div>
+                                <div class="item-input">
+                                    <input type="tel" placeholder="请输入您的身份证号">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content item-link open-popup" data-popup=".selectbank" id="J_bank_tag">
+                            <div class="item-inner">
+                                <div class="item-title label">选择银行</div>
+                                <div class="item-input"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title label">银行卡号</div>
+                                <div class="item-input">
+                                    <input type="tel" placeholder="请输入您的银行卡号">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="cont-margin cont-padded mt-big">
+                <a class="button button-fill button-big j_open_redbag">确认</a>
+                <p class="notice">信息绑定成功后即可获得现金红包</p>
+            </div>
+        </div>
+    
+
+        <div class="idx-footer" style="display:block; font-size:1rem; text-align:center; margin: 2rem auto;">
+	    	<img src="{$HOST_STATIC}/licai/dist/wbf/img/logo-full.png" style="height: 1.2rem;"/>
+	    	<p style="line-height:1;color:#fff; font-size:.6rem; margin:0;"> ©{$smarty.now|date_format:"%Y"} 优物库提供服务</p>
+		</div>
+    </div>
+    <!-- content end -->
+    {literal}
+    <script type="text/javascript">
+    //分享信息配置
+    shareData.title = '沃百富红包';
+    shareData.subject = '获奖记录';
+    </script>
+    {/literal}
+</div>
+<!-- page end -->
+{include file="licai/common/selectbank.phtml"}

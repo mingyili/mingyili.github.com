@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
+    <title>沃百富理财</title>
+    <link rel="stylesheet" type="text/css" href="{$HOST_STATIC}/licai/dist/wbf/css/reset_201512276.css"/>
+    {literal}
+
+    <script type="text/javascript">
+    /*图片错误*/
+    function nofind(str){
+        var img = event.srcElement;
+        img.src = str || "{/literal}{$HOST_STATIC}/licai/dist/wbf/img/error-640x640.jpg{literal}";
+        img.onerror = null;
+    }
+    //分享信息配置
+    var shareData = {
+        title : '沃百富理财',
+        subject : '沃百富理财-联通官方理财平台',
+        pic_url : '{/literal}{$HOST_STATIC}/licai/dist/wbf/img/logo.jpg{literal}'
+    };
+    </script>
+    {/literal}
+</head>
+<body class="body" id="body" style="visibility:hidden; opacity:0;">
+{if $htmlhref}
+{include file="$htmlhref"}
+{else}
+{include file="licai/wbf/index/index.html"}
+{/if}
+
+<script src="{$HOST_STATIC}/licai/dist/common/js/zepto.js"></script>
+<script src="{$HOST_STATIC}/licai/dist/common/js/sea.js"></script>
+{literal}
+<script type="text/javascript">
+
+/*var AD = {
+    str : "{/literal}{$HOST_STATIC}{literal}/licai/dist/wbf/img/ad.jpg",
+    link : "http://www.baidu.com"
+};*/
+            
+//公共变量
+var API = {
+    HtmlUrl: '{/literal}{$htmlhref}{literal}',
+    HOST: '{/literal}{$HOST}{literal}',
+    sid: '{/literal}{$sid}{literal}',
+    FollowImg: "{/literal}{if $selleroauthinfo.wx_id}http://open.weixin.qq.com/qr/code/?username={$selleroauthinfo.wx_id}&style=1{elseif $selleroauthinfo.uid} http://open.weixin.qq.com/qr/code/?username={$selleroauthinfo.uid}&style=1{/if}{literal}"
+}
+
+// seajs 配置
+//var timestamp = Date.parse(new Date());
+seajs.config({
+    // 设置路径，方便跨目录调用
+    paths: {
+        'host': '{/literal}{$HOST_STATIC}{literal}',
+        'base': '{/literal}{$HOST_STATIC}{literal}/licai/dist', //基础路径
+        'js': '{/literal}{$HOST_STATIC}/licai/dist/wbf/js{literal}',
+        'css': '{/literal}{$HOST_STATIC}/licai/dist/wbf/css{literal}'
+    },
+    map: [[/\.(css|js)$/i, '_201514146.$1']],  //map,批量更新时间戳
+    charset: 'utf-8' // 文件编码
+});
+</script>
+{/literal}
+<script src="{$HOST_STATIC}/licai/dist/common/js/base_20160131.js"></script>
+
+{literal}
+<script type="text/javascript"></script>
+{/literal}
+{include file="licai/common/share.phtml"}
+{include file="licai/common/statistics.phtml"}
+</body>
+</html>

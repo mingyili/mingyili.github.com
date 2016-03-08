@@ -1,0 +1,50 @@
+//
+// Badges
+// --------------------------------------------------
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.45rem 0.15rem;
+  font-size: 0.6rem;
+  line-height: 1;
+  color: @color-text;
+  background-color: rgba(0, 0, 0,.15);
+  border-radius: 5rem;
+
+  // Inverted badges have no background.
+  &.badge-inverted {
+    padding: 0 0.25rem 0 0;
+    background-color: transparent;
+  }
+}
+
+//
+.tag{
+    display: inline-block;
+    padding: .17rem .35rem .15rem;
+    font-size: .6rem;
+    line-height: 1;
+    background-color: rgba(0, 0, 0,.15);
+    color:#fff;
+    border-radius: .2rem;
+}
+
+//顶部tag
+.tag-hot,
+.tag-new{
+    background: url('@{imgBaseUrl}/spirit.png') no-repeat;
+    background-size: 7rem auto;
+
+    position: absolute;
+    top:0;
+    left: 0;
+    display: block;
+    width: 2rem;
+    height: 2em;
+}
+.tag-new{
+    background-position: 0 0;
+}
+.tag-hot{
+    background-position: 0 -1.7rem;
+}

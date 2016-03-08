@@ -1,0 +1,161 @@
+// Variables
+@import "base/variables.less";
+// Mixins
+@import "../../common/less/base/mixins.less";
+
+//我的收益信息
+.main-head,
+.detail-head{
+	position: relative;
+	color: #fff;
+	text-align: center;
+	padding: 1rem .8rem .6rem;
+	background-color: @color-primary;
+	a, a:active{
+		color: #fff;
+		font-size: .8rem;
+	}
+}
+.main-head{
+	.v-2{
+		padding-right: 3px;
+		font-size: 110%;
+	}
+	.info{
+		padding: 1.5rem 0 .6rem;
+	}
+	.xlarge{
+		font-size: 2rem;
+	}
+	.small{
+		color: rgba(255,255,255,.7);
+	}
+}
+//我的资金信息
+.money-info,
+.main-info{
+	background-color: darken(@color-primary, 3%);
+	color: #fff;
+}
+.main-info{
+	padding:.3rem 0 .6rem;
+	.row{
+		.col-33{
+			text-align: center;
+		}
+		small{
+			color: rgba(255,255,255,.7);
+		}
+		.big{
+			margin-top: .1rem;
+			font-size: 1rem;
+		}
+	}
+}
+.money-info{
+	padding:.5rem .8rem .6rem;
+}
+.media-list{
+	margin-top: 0;
+}
+
+/** detail页面信息 **/
+.detail-head{
+	padding: 1.8rem .8rem 1.5rem;
+	.small{
+		font-size: .55rem;
+	}
+	.large{
+		font-size: 1.3rem;
+	}
+	.xlarge{
+		font-size: 2.1rem;
+	}
+}
+.infinite-scroll-preloader{
+	background-color: #fff;
+}
+//tab重定义
+.detail-tab{
+	.list-block{
+		margin-top: 0;
+		font-size: .7rem;
+	}
+	.list-noborder{
+		margin-bottom: 0;
+		ul{
+			padding: 1rem 0 1.4rem;
+		}
+		&:last-child ul{
+			padding-bottom: 1.8rem;
+		}
+		.item-inner{
+			padding:0 1.2rem;
+			min-height: 1.2rem;
+			.item-title{
+				color:@color-text-secondary;
+				&.large{
+					color:@color-primary;
+					font-size: .75rem;
+				}
+			}
+			.item-after{
+				color:@color-link;
+			}
+		}
+	}
+	.media-list{
+		ul{
+			padding:.2rem 0 1rem;
+			background-color: #fff;
+		}
+		.item-inner{
+			padding-right: 1rem;
+			padding-top: .8rem;
+			.item-after{
+				color:@color-primary;
+			}
+		}
+		.item-title-row{
+			font-size: .75rem;
+			margin-bottom: .3rem;
+		}
+		.item-second{
+			color: @color-text-gray;
+			text-align: justify;
+		}
+	}
+}
+//.prd-head
+.prd-head{
+	position: relative;
+	text-align: center;
+	padding: 1.3rem 0 0;
+	height: 10rem;
+	z-index: 1;
+	line-height: 1.2;
+	background-color:#fff;
+	margin-bottom: .5rem;
+	.row{
+		margin-top: 3.4rem;
+	    overflow: visible;
+	}
+	.xbig{
+		margin-top: -1.15rem;
+		font-size: 1.8rem;
+	}
+	small{
+		font-size: .7rem;
+	}
+	.small{
+		margin:.2rem 0 0;
+		display: block;
+	}
+}
+//circle
+.circle {
+    position: absolute;
+    overflow: hidden;
+    left: 50%;
+    z-index: -1;
+}

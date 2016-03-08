@@ -1,0 +1,42 @@
+// Variables
+@import "base/variables.less";
+// Mixins
+@import "../../common/less/base/mixins.less";
+//form
+@import "../../common/less/components/forms.less";
+
+//login
+.main-banner{
+	min-height: 10rem;
+	img{
+		max-width: 100%;
+	}
+}
+.list-block{
+	ul{
+		padding: .2rem 0;
+	}
+	margin: .6rem 0;
+}
+.content-block{
+	margin: .7rem 0 .3rem;
+}
+
+.text-content{
+	text-align: center;
+	font-size: .65rem;
+	color: @color-text-gray;
+    margin: 0 0 1.1rem;
+    &.border-b{
+		.hairline-color(bottom, #ddd);
+    }
+    a{
+    	color: @color-text-gray;
+    	padding: .3rem;
+    	margin-bottom: .2rem;
+    	display: inline-block; 
+    	&:active{
+    		color: @color-link;
+    	}
+    }
+}

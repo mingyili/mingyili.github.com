@@ -1,0 +1,86 @@
+<!-- page start -->
+<div class="page" id='cashtake' data-js="cash.js, selectaddr.js, selectcard.js" data-css='cash.css'>
+	<header class="bar bar-nav">
+		<a class="button button-link button-nav pull-left back" href="{$HOST}/index.php/weixin/activity/licai?link=myasset"><span class="icon icon-left"></span></a>
+		<h1 class="title">{*if $sid}转出到微信钱包{/if*}</h1>
+	</header>
+
+	<!-- content start -->
+    <div class="content native-scroll">
+		<div class="cont-margin mt-big">
+			<div class="buttons-row cont-padded">
+				<a href="#to_bank" class="tab-link button bg-white active">转出到银行卡</a>
+				<a href="#to_wx" class="tab-link button bg-white">转出到微信钱包</a>
+			</div>
+			<div class="blank"></div>
+			<div class="tabs">
+				
+				<div id="to_bank" class="tab active">
+					<div class="list-block media-list list-noborder cont-padded">
+						<div class="item-content bg-white j_selectcard">
+							<div class="item-media"><img src="{$HOST_STATIC}/licai/dist/common/img/bank_zs.png" width="40"></div>
+							<div class="item-inner">
+								<div class="item-title big">招商银行卡</div>
+								<div class="item-subtitle color-gray">尾号：2999</div>
+							</div>
+						</div>
+					</div>
+					<div class="list-block cont-padded">
+						<div class="item-content item-link bg-white j_selectaddr">
+							<div class="item-inner">
+								<div class="item-title">所在地区</div>
+							</div>
+						</div>
+						<div class="item-content item-link bg-white">
+							<div class="item-inner">
+								<!-- <div class="item-title label">开户行</div> -->
+								<div class="item-input">
+									<input type="text" placeholder="请输入开户行信息">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="notice cont-padded">9:00-23:00期间转出，支持1500元最快2小时到账，正常1个工作日到到账</div>
+				</div>
+				
+				<div id="to_wx" class="tab">
+					<div class="list-block media-list list-noborder cont-padded">
+						<div class="item-content bg-white">
+							<div class="item-media"><img src="{$HOST_STATIC}/licai/dist/common/img/pay_wx.png" width="40"></div>
+							<div class="item-inner">
+								<div class="item-title big">微信钱包</div>
+								<div class="item-subtitle color-gray">微信昵称：某某某</div>
+							</div>
+						</div>
+					</div>
+					<div class="notice cont-padded">9:00-23:00期间转出，支持1500元最快2小时到账，正常1个工作日到到账</div>
+				</div>
+
+			</div>
+			
+		</div>
+		<div class="cont-margin mt-big">
+			<div class="cont-padded">取现金额</div>
+			<div class="list-block list-noborder cont-padded">
+				<div class="item-content bg-white">
+					<div class="item-inner">
+						<div class="item-input">
+							<input type="text" placeholder="最多可取1.00元">
+						</div>
+						<div class="item-after"><span class="color-link">全部取出</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="notice cont-padded">今天还可以取现3次，转出到为新钱包最高支持1500元。</div>
+		</div>
+
+		<div class="cont-margin cont-padded mt-big">
+			<a class="button button-fill button-big j_open_pwd">确认转出</a>
+			<!-- <a class="button button-big disabled">确认转出</a> -->
+		</div>
+		<div class="blank mt-big"></div>
+        {include file="licai/common/copyright.phtml"}
+    </div>
+    <!-- content end -->
+</div>
+<!-- page end -->

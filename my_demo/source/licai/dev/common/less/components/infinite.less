@@ -1,0 +1,28 @@
+.infinite-scroll-preloader {
+    line-height: 2rem;
+    text-align: center;
+    overflow: hidden;
+    .preloader-text {
+        font-size: .7rem;
+        color: @color-text-gray;
+        vertical-align: -.05rem;
+    }
+    .preloader {
+        width: 1rem;
+        height: 1rem;
+        vertical-align: middle;
+    }
+    &.hide{
+        animation: loadHide .4s .4s forwards;
+    }
+}
+@keyframes loadHide {
+    from {
+        height: 2rem;
+        opacity: 1;
+    }
+    to {
+        height: 0rem;
+        opacity: 0;
+    }
+}

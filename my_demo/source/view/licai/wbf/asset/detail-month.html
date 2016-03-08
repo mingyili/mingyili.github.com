@@ -1,0 +1,82 @@
+<!-- page start -->
+<div class="page head-back" id='detailmonth' data-js="asset.js, selectinvest.js" data-css="index.css">
+	<a class="btn-back icon-left back" href='{$HOST}/index.php/weixin/activity/licai?link=myasset' ></a>
+	<a class="bar bar-footer btn j-monthcash" href="{$HOST}/index.php/weixin/activity/licai?link=cashtake" >我要提现</a>
+	<!-- content start -->
+	<div class="content infinite-scroll" data-distance="100" data-toggle="scroller" data-type="js">
+    	<div class="content-inner havefoot">
+	    	<div class="detail-head">
+	    		<div class="large">日利宝</div>
+	    		<div class='small'>￥总资产（元）</div>
+	    		<div class="xlarge">暂无收益</div>
+	    	</div>
+	    	<div class="buttons-tab">
+				<a href="#his_invest" class="tab-link active button">投资记录</a>
+				<a href="#his_cash" class="tab-link button">取现记录</a>
+			</div>
+	    	<div class="tabs border-t detail-tab">
+				<div id="his_invest" class="tab">
+					<div class="list-block">
+						<div class="list-none">暂无月利宝资金，<a href="{$HOST}/index.php/weixin/activity/licai?link=invest" external>立即投资</a></div>
+					</div>
+				</div>
+				<div id="his_cash" class="tab active">
+					<div class="list-block list-noborder list-full">
+						<ul>
+							<li class="item-inner">
+								<div class="item-title large">产品标题产品标题产品标题产品标题产品标题产品标题</div>
+								<div class="item-after"><span class="tag bg-primary">处理中</span></div>
+							</li>
+							<li class="item-inner">
+								<div class="item-title">提现方式</div>
+								<div class="item-after">微信钱包</div>
+						    </li>
+							<li class="item-inner">
+								<div class="item-title">提现金额</div>
+								<div class="item-after">100.00元</div>
+						    </li>
+							<li class="item-inner">
+								<div class="item-title">提现时间</div>
+								<div class="item-after">2015-11-11</div>
+						    </li>
+							<li class="item-inner">
+								<div class="item-title">存入时间</div>
+								<div class="item-after">2015-11-11 19:00</div>
+						    </li>
+						</ul>
+					</div>
+					<div class="list-block list-noborder list-full">
+						<ul>
+							<li class="item-inner">
+								<div class="item-title large">产品标题</div>
+								<div class="item-after"><span class="tag bg-gray">已出账</span></div>
+							</li>
+							<li class="item-inner">
+								<div class="item-title">提现方式</div>
+								<div class="item-after">微信钱包</div>
+						    </li>
+							<li class="item-inner">
+								<div class="item-title">提现金额</div>
+								<div class="item-after">100.00元</div>
+						    </li>
+							<li class="item-inner">
+								<div class="item-title">提现时间</div>
+								<div class="item-after">2015-11-11</div>
+						    </li>
+							<li class="item-inner">
+								<div class="item-title">存入时间</div>
+								<div class="item-after">2015-11-11 19:00</div>
+						    </li>
+						</ul>
+					</div>
+				</div>
+				<!-- his_cash tab end -->
+			</div> 
+			<!-- tab end -->
+		</div>
+		<!-- content-inner end -->
+        {include file="licai/common/copyright.phtml"}
+    </div>
+    <!-- content end -->
+</div>
+<!-- page end -->

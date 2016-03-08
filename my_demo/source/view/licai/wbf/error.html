@@ -1,0 +1,24 @@
+<!-- page start -->
+<div class="page" id='error'>
+	<header class="bar bar-nav">
+		<a class="button button-link button-nav pull-left back" href='{$HOST}/index.php/weixin/activity/licai?link=invest' ><span class="icon icon-left"></span></a>
+	</header>
+	
+	<!-- content start -->
+    <div class="content native-scroll">
+		<div class="list-block border-b">
+			<div class="list-none" style="padding:2.5rem 1.5rem 0.1rem"><div class="color-primary">
+				<i class="icon-info" style="font-size:5rem; line-height:1.2;"></i>
+				<div style="padding-bottom:2.2rem">支付失败!</div>
+				<div class="link-content border-t">
+					<a href="{$HOST}/index.php/licai/conduct/index?sid={$sid}" external>回到首页</a> |
+					<a href="{$HOST}/index.php/licai/conduct/user?sid={$sid}" external>个人中心</a> |
+					<a class="j_follow" data-text="长按二维码识别，进入公众号">联系我们</a> 
+				</div>
+			</div></div>
+		</div>
+        {include file="licai/common/copyright.phtml"}
+    </div>
+    <!-- content end -->
+</div>
+<!-- page end -->

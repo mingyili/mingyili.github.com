@@ -1,0 +1,77 @@
+<!-- page start -->
+<div class="page" id='user' data-css="user.css" data-js="user.js">
+	{include file="licai/wbf/common/footnav.phtml"}
+	
+	<!-- content start -->
+    <div class="content" data-toggle="scroller" data-type="js">
+    	<div class="user-head">
+			<div class="user-img">
+				<img src="{$HOST_STATIC}/licai/dist/wbf/img/user_default.jpg" alt="" onerror="nofind();">
+			</div>
+			<div class="user-info">
+				<div class="user-name">游客</div>
+				<div class="user-code">我的邀请码：<span>180355443344</span></div>
+			</div>
+		</div>
+
+		<div class="list-block user_list">
+			<ul>
+				<li><a class="item-link item-content" href="{$HOST}/index.php/weixin/activity/licai?link=coupon" >
+					<div class="item-inner">
+						<div class="item-subtitle"><i class="icon icon-coupon"></i>加息券</div>
+						<div class="item-after"><span class="color-primary">1张</span></div>
+					</div>
+				</a></li>
+				<li><a class="item-link item-content" href="{$HOST}/index.php/weixin/activity/licai?link=identity">
+					<div class="item-inner">
+						<div class="item-subtitle"><i class="icon icon-identity"></i>身份认证</div>
+						<div class="item-after"><span class="color-danger">未认证</span></div>
+				    </div>
+				</a></li>
+			</ul>
+
+			<ul>
+				<li><a class="item-link item-content" href="{$HOST}/index.php/weixin/activity/licai?link=bindphone#bindphone">
+					<div class="item-inner">
+						<div class="item-subtitle"><i class="icon icon-lock"></i>绑定手机</div>
+						<div class="item-after"><span class="color-primary">已绑定</span></div>
+					</div>
+				</a></li>
+				<li><a class="item-link item-content">
+					<div class="item-inner">
+						<div class="item-subtitle"><i class="icon icon-wechat"></i>绑定微信</div>
+						<div class="item-after"><span class="color-primary">已绑定</span></div>
+				    </div>
+				</a></li>
+			</ul>
+
+			<ul>
+				<li><a class="item-link item-content" href="{$HOST}/index.php/weixin/activity/licai?link=oldpwdconfirm">
+					<div class="item-inner">
+						<div class="item-subtitle"><i class="icon icon-edit"></i>取现密码</div>
+						<div class="item-after"><span class="color-danger">未设置</span></div>
+				    </div>
+				</a></li>
+				<li><a class="item-link item-content" href="{$HOST}/index.php/weixin/activity/licai?link=bindcard">
+					<div class="item-inner">
+						<div class="item-subtitle"><i class="icon icon-card"></i>绑定银行卡</div>
+						<div class="item-after"><span class="color-danger">未绑定</span></div>
+				    </div>
+				</a></li>
+			</ul>
+
+			<ul>
+				<li><a class="item-link item-content" href="tel:18911778865" external>
+					<div class="item-inner">
+						<div class="item-subtitle"><i class="icon icon-server"></i>客服电话</div>
+						<div class="item-after"><span class="color-primary">18911778865</span></div>
+					</div>
+				</a></li>
+			</ul>
+		</div>
+    	
+        {include file="licai/common/copyright.phtml"}
+    </div>
+    <!-- content end -->
+</div>
+<!-- page end -->

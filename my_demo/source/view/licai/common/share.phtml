@@ -1,0 +1,30 @@
+{literal}
+<script>
+seajs.use(['base/common/js/jweixin-1.0.0.js', 'base/common/js/wxshare.js'], function(wx, a) {
+	//配置apiconfig
+	window.wxConfig = {
+		debug : false, // 开启调试模式,
+		appId : '{/literal}{$share_signature.appId}{literal}', //公众号的唯一标识
+		timestamp : {/literal}{if $share_signature.timestamp}{$share_signature.timestamp}{else}1{/if}{literal}, // 必填，生成签名的时间戳
+		nonceStr : '{/literal}{$share_signature.nonceStr}{literal}', // 必填，签名
+		signature : '{/literal}{$share_signature.signature}{literal}', // 
+		jsApiList : [
+			'checkJsApi','onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','hideMenuItems','showMenuItems','translateVoice','startRecord','stopRecord',
+			'onRecordEnd','playVoice','pauseVoice','stopVoice','uploadVoice','downloadVoice','chooseImage','previewImage',
+			'uploadImage','downloadImage','openLocation','getLocation','hideOptionMenu','showOptionMenu','closeWindow',
+			'scanQRCode'
+		],
+		shareUniKey : '{/literal}{$buyer_share_unique_key}{literal}' //分享的唯一字符
+	};
+	var data = (typeof(shareData) != 'undefined') ? shareData : ''; //传入分享信息可定义为共
+	//if(data && !data.pic_url) = //商城logo
+	console.log(data);
+	shareywk(wx, data); //shareData传入
+	window.setShareData = function(sharedata){
+		setShare(wx, sharedata);
+		/*seajs.use(['base/common/js/jweixin-1.0.0.js', 'base/common/js/wxshare.js'], function(wx, a) {
+		});*/
+	}
+});
+</script>
+{/literal}

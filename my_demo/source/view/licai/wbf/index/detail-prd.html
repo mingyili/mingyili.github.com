@@ -1,0 +1,114 @@
+<!-- page start -->
+<div class="page" id='detailprd' data-css="index.css" data-js="circle.js">
+    <a class="btn-back icon-left back" href='{$HOST}/index.php/weixin/activity/licai?link=index' ></a>
+	<a class="bar bar-footer btn" href="{$HOST}/index.php/weixin/activity/licai?link=invest" external>立刻投资</a>
+	
+	<!-- content start -->
+    <div class="content" data-toggle="scroller" data-type="js">
+    	<div class="prd-head">
+    		<div id="J_circle" class="circle" data-percent="7.5" data-size="17"></div>
+    		<div class="row no-gutter">
+    			<div class="col-33">
+					<div class="color-primary">50%</div>
+					<small>项目进度</small>
+				</div>
+			    <div class="col-33">
+					<div class="xbig color-primary">7.5%</div>
+			    	<small>当前年化收益</small>
+			    	<a class="small">随时存取</a>
+			    </div>
+			    <div class="col-33">
+					<div class="color-primary">320</div>
+			    	<small>投资人数</small>
+			    </div>
+    		</div>
+    	</div>
+		<div class="buttons-tab">
+			<a href="#prd_brief" class="tab-link active button">产品介绍</a>
+			<a href="#prd_detail" class="tab-link button">安全说明</a>
+		</div>
+    	<div class="tabs border-t detail-tab">
+			<div id="prd_brief" class="tab active">
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">本期规模</div>
+								<div class="item-after"><span class="color-link">100</span>万
+								</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">年化收益率</div>
+								<div class="item-after"><span class="color-link">6</span>%</div>
+						    </div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">计息方式</div>
+								<div class="item-after"><span class="color-link">18</span>点前买入当天机计息</div>
+						    </div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">手续费</div>
+								<div class="item-after">无手续费</div>
+						    </div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">提现方式</div>
+								<div class="item-after">每天可取现3次</div>
+						    </div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">到账时间</div>
+								<div class="item-after">1个工作日</div>
+						    </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="prd_detail" class="tab">
+				<div class="list-block media-list">
+				<ul>
+					<li class="item-content">
+						<div class="item-inner">
+							<div class="item-title-row">
+								<div class="item-title">收益计算规则：</div>
+							</div>
+							<div class="item-second">
+							预期年化收益率6%<br/>
+							（预期收益会根据债权的实际收益上下浮动，过往预期收益全部兑现）</div>
+						</div>
+					</li>
+					<li class="item-content">
+						<div class="item-inner">
+							<div class="item-title-row">
+								<div class="item-title">买入及计息规则：</div>
+							</div>
+							<div class="item-second">
+							1.日利宝账户买入金额100元起；<br/>
+							2.日利宝18点前买入当天开始计息并产生收益（含周末及节假日）。沃百富理财在原T+2工作日计息的基础上为用户补充至当天计息.</div>
+						</div>
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+
+        {include file="licai/common/copyright.phtml"}
+    </div>
+    <!-- content end -->
+    {literal}
+	<script type="text/javascript">
+	//分享信息配置
+	shareData.title = '立刻投资';
+	shareData.subject = '沃百富立刻投资-联通官方理财平台';
+	</script>
+	{/literal}
+</div>
+<!-- page end -->

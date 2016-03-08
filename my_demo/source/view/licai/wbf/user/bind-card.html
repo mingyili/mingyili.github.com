@@ -1,0 +1,54 @@
+<!-- page start -->
+<div class="page" id='bindcard' data-js="user.js" data-css='cash.css'>
+	<header class="bar bar-nav">
+		<a class="button button-link button-nav pull-left back" href='{$HOST}/index.php/weixin/activity/licai?link=user'><span class="icon icon-left"></span></a>
+		<h1 class="title">绑定银行卡</h1>
+	</header>
+
+	<!-- content start -->
+    <div class="content native-scroll">
+    	
+    	<div class="cont-margin mt-big cont-padded">  
+            <div class="cont_info">为保障您的资金安全，您首次买入理财产品的银行卡将作为默认银行卡，后续仅可以使用此卡进行买入和取出，资金同卡进出。</div>
+            <div class="blank"></div>
+            <div class="cont-padded small color-primary">* 我们会妥善保管您的银行卡信息，保证不会泄露</div>
+        </div>
+        <div class="cont-margin">
+            <div class="list-block cont-padded bg-white">
+                <ul>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title color-gray">持卡人</div>
+                            <div class="item-after">李*一</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content item-link open-popup" data-popup=".selectbank" id="J_bank_tag">
+                        <div class="item-inner">
+                            <div class="item-title color-gray">选择银行</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner">
+                            <div class="item-input">
+                                <input type="tel" placeholder="银行卡号">
+                            </div>
+                        </div>
+                    </div>
+                </li></ul>
+            </div>
+        
+            <div class="cont-margin cont-padded mt-big">
+                <a class="button button-fill button-big j_bindcard">确认</a>
+            </div>
+    	</div>
+        {include file="licai/common/copyright.phtml"}
+    </div>
+    <!-- content end -->
+</div>
+<!-- page end -->
+{include file="licai/common/selectbank.phtml"}

@@ -1,0 +1,66 @@
+/* 1px hack */
+.border-t {border-top: 1px solid @border-default-color;}
+.border-b {border-bottom: 1px solid @border-default-color}
+.border-tb{
+    border-top: @border-default-color 1px solid;
+    border-bottom: @border-default-color 1px solid;
+    background-image:none;
+}
+.border-l{border-left: 1px solid @border-default-color;}
+.border-r{border-right: 1px solid @border-default-color;}
+.border{
+    border: 1px solid @border-default-color;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .border{position: relative; border: 0;}
+    .border-t,.border-b,.border-l,.border-r,.border-tb{border: 0;}
+    .border-t{
+        background-position: left top; 
+        background-image: @border-t;
+    }
+    .border-b{
+        background-position: left bottom;
+        background-image: @border-b;
+    }
+    .border-t,
+    .border-b,
+    .border-tb{
+        background-repeat: repeat-x;
+        -webkit-background-size: 100% 1px;
+    }
+    .border-tb{
+        background-image: @border-t,@border-b;
+        background-position: top, bottom;
+    }
+    .border-l{
+        background-position: left top; 
+        background-image: @border-l;
+    }
+    .border-r{
+        background-position: right top;
+        background-image: @border-r;
+    }
+    .border-l,
+    .border-r{
+        background-repeat: repeat-y;
+        -webkit-background-size: 1px 100%;
+    }
+    .border:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0; 
+        background-image: @border-t,@border-r,@border-b,@border-l;
+        -webkit-background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
+                background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
+        background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
+        background-repeat: no-repeat;
+        background-position: top, right, bottom, left;
+        padding: 1px;
+        -webkit-box-sizing: border-box;
+        z-index: 10;
+        pointer-events: none;
+    }
+}

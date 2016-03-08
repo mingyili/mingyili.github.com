@@ -1,0 +1,86 @@
+// Variables
+@import "base/variables.less";
+// Mixins
+@import "../../common/less/base/mixins.less";
+
+// forms
+@import "../../common/less/components/forms.less";
+
+.diy-list{
+	&.list-block{
+		margin: 0;
+	}
+	.inline-img{
+		width: 1.4rem;
+		margin-bottom: -.08rem;
+	}
+	&.list-block .item-inner{
+    	padding-top: .45rem;
+    	padding-bottom: 0.4rem;
+		&:after{
+			font-size: .8rem;
+			margin-top: -.4rem;
+			right: .6rem;
+		    color: @color-text-gray;
+		}
+	}
+}
+
+
+.act_diy{
+	background-color: #cb0800;
+	.banner{
+		font-size: 0;
+		img{
+			max-width: 100%;
+		}
+	}
+	.list-block{
+		background-color: rgba(0,0,0, .2);
+		padding: .2rem 0;
+		margin: 0 .5rem;
+		border-radius: 5px;
+		ul{
+			background-color: transparent;
+			.hairline-remove(bottom);
+		}
+		.item-content{
+			padding-left: .4rem;
+		}
+		.item-title.label{
+			color: rgba(0,0,0,.4);
+			text-align: right;
+		    width: 4rem;
+		    padding-right: .5rem;
+		}
+		.item-inner{
+			.hairline-color(bottom, #b92c26);
+			.color-gray{
+				color: rgba(255,255,255,.6);
+			}
+		}
+		.item-title,
+		.item-input,
+		input, 
+		input::-webkit-input-placeholder { /* WebKit browsers */
+		    color: #FF9827;
+		}
+		.item-link{
+			&:active{
+				background-color: rgba(0,0,0,.1)!important;
+			}
+			.item-inner:after{
+				color: rgba(255,255,255,.4);
+			}
+		}
+	}
+	.button.button-fill{
+		background-color: #fad13c;
+		color: #b90700;
+		border-color: #fad13c;
+	}
+	.notice{
+		text-align: center;
+		color: #fad13c;
+	}
+}

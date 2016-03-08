@@ -1,0 +1,331 @@
+//
+// Base styles
+// --------------------------------------------------
+// Use box sizing on all the things!
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+}
+// We fix position the body and scroll `.content`.
+body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: @font-family-default;
+    font-size: @font-size-default;
+    font-weight: @font-weight;
+    line-height: 1.5;
+    color: @color-text;
+    background: @color-bg;
+    overflow: hidden;
+}
+
+a, input, textarea, select, button {
+    outline: 0;
+}
+p {
+    margin: 1em 0;
+}
+
+// Universal link styling
+a {
+    color: @color-link;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // Removes the dark touch outlines on links in webkit browsers.
+    &:active {
+        color: @color-link-active;
+    }
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: @color-bg;
+    z-index: 2000;
+}
+
+// Wrapper to be used around all content not in .bar-title and .bar-tab
+.content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+// Hack to force all relatively and absolutely positioned elements still render while scrolling
+// Note: This is a bug for "-webkit-overflow-scrolling: touch"
+/* .content > * {
+    //transform: translateZ(0); //这一行会导致三星 S4 android 4.2 无法滚动
+} */
+
+// Pad top/bottom of content so it doesn't hide behind bars.
+// Note: For these to work, content must come after both bars in the markup
+.bar-nav ~ .content {
+    top: @bar-base-height;
+}
+
+.bar-header-secondary ~ .content {
+    top: (@bar-base-height*2);
+}
+
+// Footer bar margin
+.bar-footer ~ .content {
+    bottom: @bar-base-height;
+}
+
+.bar-footer-secondary ~ .content {
+    bottom: (@bar-base-height*2);
+}
+
+// Tab bar margin
+.bar-tab ~ .content {
+    bottom: @bar-tab-height;
+}
+
+.bar-footer-secondary-tab ~ .content {
+    bottom: (@bar-tab-height+@bar-base-height);
+}
+
+// Utility classes
+.text-center {
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.v-2{
+    vertical-align: -.08rem;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.clearfix {
+    .clearfix();
+}
+
+////
+.cont-margin{
+    margin: @side-spacing-tb 0;
+    .list-block{
+        margin: .4rem 0;
+    }
+    p{
+        line-height: 1;
+        margin: .3rem 0 0;
+    }
+    .button-big{
+        margin: .6rem 0;
+    }
+    .p{
+        padding:.2rem 0;
+        font-size: .75rem;
+        &:first-child{
+            padding: .5rem 0 .8rem;
+            margin-bottom: .3rem;
+            line-height: 1.5rem;
+        }
+    }
+}
+
+.cont-padded{
+    padding: 0 @side-spacing-lr;
+    &.list-block{
+        padding: 0;
+        .item-content{
+            padding-left: @side-spacing-lr;
+        }
+    }
+}
+
+.cont-ptb{
+    padding-top: .4rem;
+    padding-bottom: 1rem;
+}
+
+.blank{
+    height: @side-spacing-tb;
+    line-height: @side-spacing-tb;
+    overflow: hidden; font-size: 0;
+}
+.mt-big{
+    margin-top:1.2rem;
+}
+
+.mb-big{
+    margin-bottom:1.75rem;
+}
+//cont_info,cont_error,cont_text
+.cont_info,
+.cont_error {
+    border-radius: .25rem;
+    border-width:1px;
+    border-style: solid;
+    padding: .8rem;
+    font-size: .7rem;
+}
+.cont_info{
+    color: @color-link;
+    border-color: #AAE9FF;
+    background-color: rgba(205,242,255,.9);
+}
+.cont_error{
+    color: @color-warning;
+    border-color: #FDC37F;
+    background-color:  rgba(255,242,183,.9);
+}
+.cont-text{
+    h4{
+        margin-bottom: .5rem;
+    }
+    p{
+        font-size: .7rem;
+    }
+}
+//底部连接
+.link-content{
+    text-align: center;
+    font-size: .65rem;
+    color: @color-text-gray;
+	margin-top: .8rem;
+    a{
+        color: @color-text-gray;
+        padding: .3rem;
+        display: inline-block; 
+        &:active{
+            color: @color-link;
+        }
+    }
+}
+//分享，关注
+.wx_menuIcon,.wx_weIcon,.wx_closeIcon,.wx_arrowIcon,.wx_sendIcon,.wx_shareIcon{display:inline-block;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAACACAMAAACV+LO7AAABTVBMVEUAAAB6fn8wNTcwNTcwNTcmLC8iKSwiKSwwNTcwNTciKSwwNTcwNTciKSwwNTciKSwrMDMiKSwUFxgiKSwcHyAaHyH///8lLC/////Y2NguMzYuNDYAAAAvMzUwNTcwNTciKSwiKSwwNTciKSwwNTciKSwwNTciKSwwNTcwNTciKSz///////8iKSz////////f39/////////////////////////////+/v7///////////8wNTf////////////////////f39////////+srKygoKD////////T09MiKSwwNTf////9/f1jZ2gzODrLzM319faQk5VBRUc+Q0Xr6+tXXF66vL36+vvl5uaJjI20tresr7DAwsJOUlTy8vLHyMiYm5yEh4iBhIV8f4E5PkBhZWdpbW/Z2tqlqKlGS03e3990d3ldYWPT1NXPHfGAAAAASnRSTlMAAf3bLA/s2cWpjYmDgHRVCPIypTkbcf6BvB8TAkvw0MzEwbKZdGxhW0QjFw3j9e3FjlIGnCmpQeUd2bSflmzNu2DGwjKPhn54lXo98dYAAAmxSURBVHja1JrpU9NAFMC3F7b0AMRSLwRUDqG0chcRRMUr+5aWI22hFKjYQg/5/z8a0jSbpHmwiThTf588ZuA3b961myUY8YHo8Pj8kCQNzY8PRwfixCH+mUgo6Hvh9b7wBUORGT9xwfIIsfJ4gWA87H8gWXjQ/5CIMjgaDnqpCW8wPDro1BlgxOoMYG8dmOTGZu/JgFCMYy+pLS9jfofOujV3trUORPsklL5o4E7liI+i+CLi2iMA3Jo7KywSM55pTRnVnvaQWwjExuitjMUCRIz4J25tcn5iqa/ZCelOJmYJypsQvZPQGyLE80fc2uRsqa2BIUmAoQGCMOWjAvimHFvjzp5+SZB+2xR5FvZSIbzhZw6tUefBYUmYYZvu9fQ1Feb1U4fWmPMryQGvBruc31MHvBe1fgsq2/a5MSw5YthjyQ0kzmisnzmytq/Bfskh/cREmN5J5ZQaCBMH1kjfkBwzYOobAjWYO6oZq3FK2Bpxnh1yLj00a+jPPiogDXutrKHzifbrH9Dmh2UOTkgumNDTOhCiQtKwV6GckMBs5L2uaw+ZllwxTTRiVExaoXRA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) no-repeat;background-size:auto 80px;}
+.wx_menuIcon{margin-bottom: -3px;width:32px;height:32px;background-position:-6px -38px;}
+.wx_weIcon{margin-bottom: -3px;width:32px;height:32px;background-position:-3px 2px;}
+.wx_closeIcon{display:block;width: 19px;height: 19px;background-position: -94px 2px;}
+
+.wx_arrowIcon{width: 50px;height: 47px;background-position: -138px -32px;background-size: auto 132px;margin-left: -50px;}
+.wx_sendIcon{margin: 0 0 -10px 6px;width:32px;height:32px;background-position:-32px -0px;background-size:auto 64px;}
+.wx_shareIcon{margin: 0 0 -10px 6px;width:32px;height:32px;background-position:-32px -32px;background-size:auto 64px;}
+
+.guide_pop.popup{
+    background:rgba(0, 0, 0, .5);
+    text-align: center;
+    color:#fff;
+    .share_cont{
+        padding: 1rem;
+        p {
+            margin: .5rem 0;
+        }
+    }
+    .follow_cont{
+        margin-top: 4rem;
+        img{
+            padding: .8rem;
+            background-color: #fff;
+            width: 10rem;
+            height: 10rem;
+        }
+    }
+
+    .wx_guide_close{
+        position: absolute;
+        background-color: rgba(0,0,0,.5);
+        bottom: 16%;
+        left: 50%;
+        padding: 1rem;
+        border-radius: 2rem;
+        margin-left: -1rem;
+    }
+}
+//head-back
+.head-back:before{
+	content:"";
+	display: block;
+    position: absolute;
+    top:0;
+    width: 100%;
+	height: 9.5rem;
+	background-color:@color-primary;
+}
+//foot-bottom
+.foot-bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    &.hasnav{
+        bottom: @bar-base-height;
+    }
+}
+.fix-top{
+	position:absolute!important;
+	top: 0;
+	left: 0;	
+	right: 0;
+	z-index: 1;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+@-webkit-keyframes slideDown {
+	from {
+		transform: translate(0, -100%);
+	}
+	to {
+		transform: translate(0, 0);
+	}
+}
+.slideDown{
+	animation: slideDown .3s forwards;
+}
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+.fadeIn{
+	animation: fadeIn .16s forwards;
+}
+
+//ad
+.ad_banner{
+    position: relative;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, .5);
+    opacity:1;
+    a{
+        -webkit-tap-highlight-color: rgba(0, 0, 0, .5);
+        display: block;
+        font-size:0;
+    }
+    .icon-close-a{
+        color: rgba(0,0,0,.5);
+        position: absolute;
+        right: .5rem;
+        top: 50%;
+        font-size: 1.2rem;
+        margin-top: -.8rem;
+    }
+    &.hideAD{
+        transition-duration: .4s;
+        -webkit-transition-duration: .4s;
+        opacity: 0;
+    }
+}

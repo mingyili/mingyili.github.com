@@ -1,0 +1,18 @@
+<nav class="bar bar-tab">
+    <a class="tab-item {if $menu_active.index}active{/if}" href="{$HOST}/index.php/weixin/activity/licai?link=index" external>
+    	<span class="icon icon-home"></span>
+    	<span class="tab-label">首页</span>
+    </a>
+	<a class="tab-item {if $menu_active.invest}active{/if}" href="{$HOST}/index.php/weixin/activity/licai?link=invest" external>
+    	<span class="icon icon-chart"></span>
+    	<span class="tab-label">我要投资</span>
+    </a>
+    <a class="tab-item {if $menu_active.asset}active{/if}" href="{$HOST}/index.php/weixin/activity/licai?link=myasset" external>
+        <span class="icon icon-transfer"></span>
+        <span class="tab-label">我的资产</span>
+    </a>
+    <a class="tab-item {if $menu_active.user}active{/if}" href="{$HOST}/index.php/weixin/activity/licai?link=user" external>
+    	<span class="icon icon-user"></span>
+    	<span class="tab-label">个人中心</span>
+    </a>
+</nav>

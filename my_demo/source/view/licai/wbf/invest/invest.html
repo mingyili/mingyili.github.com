@@ -1,0 +1,45 @@
+<!-- page strat -->
+<div class="page" id='invest' data-js="invest.js" data-css="invest.css">
+	<header class="bar bar-nav">
+		<div class="buttons-tab">
+			<a href="#prd_day" class="tab-link active button">日利宝</a>
+			<a href="#prd_month" class="tab-link button">月利宝</a>
+		</div>
+	</header>
+	{include file="licai/wbf/common/footnav.phtml"}
+
+	<!-- content strat -->
+    <div class="content infinite-scroll" data-distance="100" data-toggle="scroller" data-type="js">
+		<div class="content-inner havefoot tabs invest-tab">
+			<div id="prd_day" class="tab active">
+				<div class="list-block media-list">
+					<a href="{$HOST}/index.php/weixin/activity/licai?link=investpay" class="item-link item-content">
+					<div class="item-inner"> 
+						<i class="tag-hot"></i>
+	    				<div class="item-title-row"><div class="item-title">活期日利宝999期</div></div>
+	    				<div class="row"><div class="col-33">
+	    					<div class="item-subtitle">100万</div><small>总金额</small>
+	    				</div><div class="col-33">
+	    					<div class="item-subtitle">56.61%</div><small>项目进度</small>
+						</div><div class="col-33">
+	    					<div class="item-subtitle">9682</div><small>投资人数</small>
+						</div></div>
+						<div class="invest-tag"><span>我要投资</span></div>
+					</div></a>
+				</div>
+			</div>
+
+			<div id="prd_month" class="tab">
+				<div class="list-block media-list"></div>
+				<!-- <div class="list-block">
+					<div class="list-none">暂无月利宝项目</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+    <!-- content end -->
+	<div class="foot-bottom hasnav">
+    	{include file="licai/common/copyright.phtml"}
+	</div>
+</div>
+<!-- page end -->

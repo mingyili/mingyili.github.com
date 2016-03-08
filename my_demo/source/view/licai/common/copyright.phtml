@@ -1,0 +1,5 @@
+<div class="idx-footer" style=" font-size:12px; text-align:center; padding:.2rem 0 .5rem; color:#aaa;">
+    {if $agent.platform eq "优物库"}
+    <a style="line-height:1; color:#aaa; margin:0 0 .5rem" href="http://youwuku.cn/"> ©{$smarty.now|date_format:"%Y"} 优物库提供服务</a>
+    {else}©{$smarty.now|date_format:"%Y"}{$agent.platform}提供服务{/if}
+</div>

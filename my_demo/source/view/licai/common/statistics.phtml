@@ -1,0 +1,27 @@
+<!-- 统计代码 -->
+<!--前端数据采集js-->
+<!-- 自定义首页、分类页统一放到首页或所有分类页进行统计 -->
+{literal}
+<script type="application/javascript">
+    //weixin分享调用的统计js
+    var sharingUrl = '{/literal}{$HOST_STATIC}{literal}/js/collect/ywk_sharing_{/literal}{$collectSharingVersion}{literal}.js' ;
+
+    var collectUrl = "https://c.midite.com/count.html"; //'{/literal}{* $collectUrl *}{literal}' ; //入口抛入
+    //可自定义的参数，用于精确捕获url，打破自定义首页、分类页等的限制
+    var currentUrl = '{/literal}{$currentUrl}{literal}' ;
+    var pageId = '{/literal}{$pageId}{literal}' ;
+    var wxSharingJsUrl = '{/literal}{$HOST_STATIC}{literal}/js/weixin/wxshare_{/literal}{$wxSharingVersion}{literal}.js' ;
+</script>
+{/literal}
+<script src="{$HOST_STATIC}/js/collect/ywk_collect_base.js"></script>
+{literal}
+<script type="text/javascript">
+function pageCount(){
+    var param = {} ; //参数对象
+    var rebuildParam = {} ; //经过分析后重组的参数对象
+    param.collectUrl = collectUrl ; //后端接收地址
+    var c = new Collect() ;
+    rebuildParam = c.count(param);
+}
+</script>
+{/literal}

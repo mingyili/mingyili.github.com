@@ -1,0 +1,116 @@
+<!-- page start -->
+<div class="page" id='investpay' data-js="selectcard.js, invest.js" data-css="invest.css">
+	<header class="bar bar-nav">
+		<a class="button button-link button-nav pull-left back" href='{$HOST}/index.php/weixin/activity/licai?link=invest' ><span class="icon icon-left"></span></a>
+		<h1 class="title">购买日利宝</h1>
+	</header>
+	
+	<!-- content start -->
+    <div class="content native-scroll">
+    	<div class="cont-margin cont-padded mt-big">
+    		<p class="big j_open_redbag">购买日利宝</p>
+    		<p class="color-primary small">活期 · 收益7.5%</p>
+    	</div>
+		<div class="cont-margin">
+			<div class="cont-padded list-block">
+				<ul>
+					<li class="item-content">
+						<div class="item-inner">
+							<div class="item-title label">金额（元）：</div>
+							<div class="item-input">
+								<input type="number" class="payMoney" placeholder="最低{if $prddetail.min_invest > 0}{$prddetail.min_invest}{else}0.01{/if}元">
+							</div>
+						</div>
+					</li>
+					<li class="item-content">
+						<div class="item-inner">
+							<div class="item-title label">加息券：</div>
+							<div class="item-input j_select_coupon">
+								<span class="gray">选择加息券</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="cont-margin cont-padded bg-white">
+			<div class="list-block media-list list-full list-checklist">
+			    
+			    <label class="label-checkbox item-content j_selectcards">
+          			<div class="item-media"><img class="inline-img" src="{$HOST_STATIC}/licai/dist/common/img/bank_zs.png"></div>
+			    	<div class="item-inner">
+			    		<div class="item-title">招商银行 储蓄卡 (1890)</div>
+		            	<div class="item-subtitle">单笔/单日2万</div>
+	            	</div>
+					<input type="radio" name="payway" value="cardpay" checked>
+					<div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+			    </label>
+			    
+			    <input class="checkopen-input" type="checkbox" id="checkopen">
+			    <div class="checkopen-div">
+				    <label class="label-checkbox item-content">
+	          			<div class="item-media"><img class="inline-img" src="{$HOST_STATIC}/licai/dist/common/img/pay_wx.png"></div>
+				    	<div class="item-inner">
+				    		<div class="item-title">微信支付</div>
+			            	<div class="item-subtitle">单笔/单日2万</div>
+		            	</div>
+						<input type="radio" name="payway" value="wxpay">
+						<div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+				    </label>
+				    <label class="label-checkbox item-content">
+	          			<div class="item-media"><img class="inline-img" src="{$HOST_STATIC}/licai/dist/common/img/pay_card.png"></div>
+				    	<div class="item-inner">
+				    		<div class="item-title">银行卡支付</div>
+			            	<!-- <div class="item-subtitle">单笔/单日2万</div> -->
+			    		</div>
+						<input type="radio" name="payway" value="cardpay">
+						<div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+				    </label>
+				    <label class="label-checkbox item-content">
+				    	<div class="item-media"><img class="inline-img" src="{$HOST_STATIC}/licai/dist/common/img/pay_balance.png"></div>
+				    	<div class="item-inner">
+				    		<div class="item-title">余额支付</div>
+			            	<div class="item-subtitle">单笔/单日没有限额</div>
+		            	</div>
+						<input type="radio" name="payway" value="balancepay">
+						<div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+				    </label>
+			    </div>
+			    <label class="checkopen" for="checkopen">更多支付方式<i class="icon-down v-2"></i></label>
+			    
+			</div>
+			<!-- <a class="button button-big button-fill button-success j_wxpay">微信安全支付</a> -->
+			<a class="button button-big button-fill button-primary j_pay">马上支付</a>
+
+			<p class="small">
+				<label class="icon-checkbox">
+					<input type="checkbox" name="checkbox" id="is_agree" checked>
+				</label>我同意《<a href="">沃百富平台服务协议</a>》</p>
+			<!-- <p class="notice">限额请查询 “微信>钱包>银行卡” </p> -->
+			<div class="blank"></div>
+			<div class="blank"></div>
+		</div>
+			
+		<div class="blank"></div>
+        {include file="licai/common/copyright.phtml"}
+    </div>
+    <!-- content end -->
+{literal}
+<script type="text/javascript">
+//公共变量
+var PAY = {
+    	minPay : 1 ,//parseFloat("{/literal}{$prddetail.min_invest}{literal}"),
+    	maxPay : 100, //parseFloat("{/literal}{$prddetail.max_invest}{literal}"),
+    	canPay : 100, //parseFloat("{/literal}{$prddetail.can_buy_amount}{literal}"),
+    	showUrl : "{/literal}{$prddetail.url}{literal}",
+    	errUrl : "{/literal}{$prddetail.errurl}{literal}",
+    	prdId : "{/literal}{$prddetail.prd_id}{literal}",
+    	allAmount : 3, //parseFloat("{/literal}{$prddetail.all_amount}{literal}"),
+    	canPay : 3, //parseFloat("{/literal}{$prddetail.can_buy_amount}{literal}"),
+    	addInvest : 3, //parseFloat("{/literal}{$prddetail.add_invest}{literal}"),
+	}
+</script>
+{/literal}
+</div>
+<!-- page end -->

@@ -1,0 +1,162 @@
+// Variables
+@import "base/variables.less";
+// Mixins
+@import "../../common/less/base/mixins.less";
+
+.user-head {
+    padding: 1.2rem .8rem .9rem;
+    background: @color-primary url('@{imgBaseUrl}/user_back.png') no-repeat;
+    background-size: cover;
+    color: #fff;
+    display: table;
+    width: 100%;
+    .user-img {
+        display: table-cell;
+        height: 4.2rem;
+        width: 4.2rem;
+        font-size: 0;
+        border-radius: 5rem;
+        border: .25rem solid rgba(255, 255, 255, .5);
+		overflow: hidden;
+		background-color:#fff;
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+    }
+    .user-info {
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: .6rem;
+    }
+    .user-name {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 1.3rem;
+    }
+    .user-code {
+        font-size: .7rem;
+    }
+}
+
+.user_list {
+    margin-top: .5rem;
+    ul {
+        margin-bottom: .5rem;
+    }
+    .icon {
+        font-size: 1.1rem;
+        margin-right: .4rem;
+        vertical-align: -0.2rem;
+        line-height: 1;
+    }
+    font-size: .75rem;
+}
+
+//coupon
+.coupon-list.list-block {
+    margin-bottom: 0;
+    margin-top: 1rem;
+	.list-none{
+		padding: 1.8rem;
+		border-radius: .3rem;
+	}
+    .item-content {
+        padding-left: .85rem;
+        background-color: #fff;
+        border-radius: .3rem;
+        margin-bottom: .5rem;
+        &.gray {
+            color: @color-text-gray;
+            .color-danger {
+                color: @color-text-gray;
+            }
+            .item-subtitle, .color-primary {
+                color: @color-text-gray-light;
+            }
+        }
+    }
+    .item-inner {
+    	padding-right: 5rem;
+        &:after {
+            display: none!important;
+        }
+    }
+    .item-title-row {
+        margin-bottom: .15rem;
+    }
+    .item-subtitle {
+        font-size: .6rem;
+        line-height: 1.4;
+    }
+}
+
+.coupon-tag {
+	color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-radius: 0 .3rem .3rem 0;
+    width: 5rem;
+    background: url('@{imgBaseUrl}/spirit.png') no-repeat;
+    background-size: 7rem auto;
+    background-position: -1.95rem -1px;
+    .gray &{
+    	background-position: -1.95rem -4.4rem;
+    }
+    span{
+    	text-align: center;
+    	position: absolute;
+    	top:50%;
+    	right: 0;
+    	width: 3.8rem;
+		margin-top: -.65rem;
+    }
+}
+//bank card
+.card_info.list-block{
+	margin:1rem 0;
+    .item-content{
+        border-radius: .25rem;
+        background-color: @color-primary;
+        color:#fff;
+        box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+        position: relative;
+        margin-bottom: .5rem;
+    }
+    .item-inner{
+        padding-right: .75rem;
+        padding-left: 2rem;
+    }
+    .item-media{
+        position: absolute;
+        top: .35rem;
+        left: .8rem;
+    }
+    .item-title-row{
+        margin-bottom: 0;
+        .item-after{
+            color: rgba(255, 255, 255, .8);
+			font-size: .65rem;
+        }
+    }
+    .item-img{
+        width: 2rem;
+        height: 2rem;
+        background-color: rgba(255,255,255,.9);
+        border-radius: 3rem;
+        padding: .25rem;
+        box-shadow: 0 1px 2px rgba(0,0,0,.1);
+        img{max-width: 100%}
+    }
+	.item-number{
+        text-align: right;
+        font-size: 1.3rem;
+        padding: 1rem 0 0;
+    }
+}
