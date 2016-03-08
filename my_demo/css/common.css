@@ -419,13 +419,12 @@ input::-webkit-inner-spin-button{
 .close {
     display: inline-block;
     line-height: 1;
-    padding:.3rem;
-    font-size: .6rem;
-    margin: -.25rem -.2rem 0 0;
-    background-color: rgba(0, 0, 0, .2);
+    font-size: 1rem;
+    margin: -.15rem -.15rem 0 0;
+    color: rgba(255, 255, 255, .8);
 }
 .close:active {
-    background-color: rgba(0, 0, 0, .8);
+    color: #fff;
 }
 /*==字体颜色==*/
 .default{ color: #e75280;}
