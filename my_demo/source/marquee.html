@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+<title>信息滚动</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="cleartype" content="on" />
+<style>
+	body{
+		margin:0;
+		padding: 0;
+	}
+	.marquee{
+		margin: 10px 0; 
+		padding:0 10px;
+		overflow: hidden;
+		white-space: nowrap;
+		font-size: 0;
+	}
+	.marquee span{
+		margin: 0;
+		padding:0 15px 0 0;
+		font-size: 16px;
+	}
+</style>
+</head>
+<body>
+
+<div class="marquee j_marquee">
+	<span>这是信息提示,这是信息提示,这是信息提,示这是信息提示,end</span>
+</div>
+
+
+<script type="text/javascript">
+/*滚动公告插件*/
+(function(){
+
+	var Marquee = function(ele){
+		this.textA = ele.childNodes[1];
+		this.textB = this.textA.cloneNode(true);
+		ele.appendChild(this.textB);
+		
+		this.ele = ele;
+		this.start();
+	};
+
+	Marquee.prototype = {
+		start: function(){
+			var _this = this;
+			this.timer = setInterval(function(){
+				_this.scroll();
+			}, 24);
+		},
+		stop: function(){
+			clearInterval(this.timer);
+		},
+		scroll: function(){
+			if(this.ele.scrollLeft >= this.textB.offsetWidth) {
+				this.ele.scrollLeft = 0;
+			}else{
+				this.ele.scrollLeft++;
+			}
+		}
+
+	};
+
+	Marquee.init = function(eles){
+		var _this = this,
+			len = eles.length;
+		for(var i = 0; i < len; i++){
+			new _this(eles.item(i));
+		}
+	}
+
+	window.Marquee = Marquee;
+})();
+
+Marquee.init(document.getElementsByClassName('j_marquee'));
+
+/*$.fn.Marquee = function(){
+	Marquee.init(this);
+};*/
+
+</script>
+</body>
+</html>
